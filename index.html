@@ -11,65 +11,54 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <style>
-        /* Теми */
+        /* Теми (Папір, Мінімалізм, Шавлія, Північ, Мокко, Оксамит, Лаванда, Цукрова вата) */
         :root {
             --font-heading: 'Lora', serif; --font-body: 'Plus Jakarta Sans', sans-serif;
             --bg-main: #F3F3F1; --surface: #FFFFFF; --ink: #111111; --ink-muted: #6B6B66;
             --border: #E5E5E0; --accent: #111111; --page-edge: #f0f0f0; --placeholder: #C4C4C0;
-            --shadow-float: 0 20px 40px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.03);
-            --shadow-card: 0 4px 15px rgba(0,0,0,0.03); 
-            --bg-texture: radial-gradient(rgba(0,0,0,0.03) 1px, transparent 0);
+            --shadow-float: 0 14px 35px rgba(0,0,0,0.04), 0 4px 10px rgba(0,0,0,0.02);
+            --shadow-card: 0 4px 15px rgba(0,0,0,0.02); --bg-texture: radial-gradient(rgba(0,0,0,0.02) 1px, transparent 0);
             --bg-size: 32px 32px;
-            
-            --status-reading-bg: #E8F0EA; --status-reading-text: #2D5A3C; 
-            --status-read-bg: #EFE9E5; --status-read-text: #7A4B3A; 
-            --status-unread-bg: #F0F0F0; --status-unread-text: #555555;
-            
+            --status-reading-bg: #E8F0EA; --status-reading-text: #2D5A3C; --status-read-bg: #EFE9E5; --status-read-text: #7A4B3A; --status-unread-bg: #F0F0F0; --status-unread-text: #555555;
             --radius-card: 24px; --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            --transition-theme: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+            --transition-theme: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
         }
-
         [data-theme="minimal"] { --font-heading: 'Plus Jakarta Sans', sans-serif; --bg-main: #F8F9FA; --surface: #FFFFFF; --ink: #212529; --ink-muted: #ADB5BD; --border: #DEE2E6; --accent: #0D6EFD; --page-edge: #E9ECEF; --bg-texture: none; --status-reading-bg: #E7F1FF; --status-reading-text: #0D6EFD; --status-read-bg: #D1E7DD; --status-read-text: #0F5132; --status-unread-bg: #F8F9FA; --status-unread-text: #6C757D; }
+        [data-theme="sage"] { --font-heading: 'Lora', serif; --bg-main: #F2F5F3; --surface: #FCFDFD; --ink: #2B3A32; --ink-muted: #798B81; --border: #DEE6E1; --accent: #4A6756; --page-edge: #EBF0ED; --bg-texture: radial-gradient(rgba(74,103,86,0.03) 1px, transparent 0); --status-reading-bg: #E1EBE5; --status-reading-text: #375342; --status-read-bg: #E9E6D8; --status-read-text: #60573B; --status-unread-bg: #EDF0EE; --status-unread-text: #798B81; }
+        [data-theme="midnight"] { --font-heading: 'Plus Jakarta Sans', sans-serif; --bg-main: #121212; --surface: #1E1E1E; --ink: #F8F9FA; --ink-muted: #ADB5BD; --border: #2D2D2D; --accent: #FFFFFF; --page-edge: #2A2A2A; --placeholder: #6C757D; --shadow-float: 0 14px 35px rgba(0,0,0,0.4), 0 4px 10px rgba(0,0,0,0.2); --shadow-card: 0 4px 15px rgba(0,0,0,0.2); --bg-texture: none; --status-reading-bg: #032830; --status-reading-text: #38BDF8; --status-read-bg: #06402B; --status-read-text: #4ADE80; --status-unread-bg: #2D2D2D; --status-unread-text: #ADB5BD; }
+        [data-theme="mocha"] { --font-heading: 'Lora', serif; --bg-main: #1C1917; --surface: #292524; --ink: #F5F5F4; --ink-muted: #A8A29E; --border: #44403C; --accent: #D7CCC8; --page-edge: #352F2D; --placeholder: #78716C; --shadow-float: 0 14px 35px rgba(0,0,0,0.4), 0 4px 10px rgba(0,0,0,0.2); --shadow-card: 0 4px 15px rgba(0,0,0,0.2); --bg-texture: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 0); --status-reading-bg: #3B2A1A; --status-reading-text: #FDBA74; --status-read-bg: #273A2B; --status-read-text: #86EFAC; --status-unread-bg: #44403C; --status-unread-text: #D6D3D1; }
+        [data-theme="velvet"] { --font-heading: 'Lora', serif; --bg-main: #1A1315; --surface: #261B1E; --ink: #F8ECEE; --ink-muted: #B3929A; --border: #3D292F; --accent: #D4849A; --page-edge: #312125; --placeholder: #8A6A72; --shadow-float: 0 14px 35px rgba(0,0,0,0.5), 0 4px 10px rgba(0,0,0,0.3); --shadow-card: 0 4px 15px rgba(0,0,0,0.3); --bg-texture: radial-gradient(rgba(212,132,154,0.03) 1px, transparent 0); --status-reading-bg: #3A2027; --status-reading-text: #ECA8B9; --status-read-bg: #242B27; --status-read-text: #8DB59C; --status-unread-bg: #322327; --status-unread-text: #B3929A; }
+        [data-theme="lavender"] { --font-heading: 'Lora', serif; --bg-main: #F4F0FB; --surface: #FFFFFF; --ink: #4B3A5A; --ink-muted: #9D8BB0; --border: #E6DDF2; --accent: #8A64B8; --page-edge: #EFE9F6; --placeholder: #C5B9D4; --bg-texture: radial-gradient(rgba(138,100,184,0.03) 1px, transparent 0); --status-reading-bg: #EDE6F5; --status-reading-text: #6A4B91; --status-read-bg: #E6F0E9; --status-read-text: #456B52; --status-unread-bg: #F0EDF5; --status-unread-text: #9D8BB0; }
         
-        [data-theme="sage"] { --font-heading: 'Lora', serif; --bg-main: #F2F5F3; --surface: #FCFDFD; --ink: #2B3A32; --ink-muted: #798B81; --border: #DEE6E1; --accent: #4A6756; --page-edge: #EBF0ED; --bg-texture: radial-gradient(rgba(74,103,86,0.04) 1px, transparent 0); --status-reading-bg: #E1EBE5; --status-reading-text: #375342; --status-read-bg: #E9E6D8; --status-read-text: #60573B; --status-unread-bg: #EDF0EE; --status-unread-text: #798B81; }
-        
-        [data-theme="midnight"] { --font-heading: 'Plus Jakarta Sans', sans-serif; --bg-main: #121212; --surface: #1E1E1E; --ink: #F8F9FA; --ink-muted: #ADB5BD; --border: #2D2D2D; --accent: #FFFFFF; --page-edge: #2A2A2A; --placeholder: #6C757D; --shadow-float: 0 20px 40px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.3); --shadow-card: 0 4px 15px rgba(0,0,0,0.3); --bg-texture: none; --status-reading-bg: #032830; --status-reading-text: #38BDF8; --status-read-bg: #06402B; --status-read-text: #4ADE80; --status-unread-bg: #2D2D2D; --status-unread-text: #ADB5BD; }
-        
-        [data-theme="mocha"] { --font-heading: 'Lora', serif; --bg-main: #1C1917; --surface: #292524; --ink: #F5F5F4; --ink-muted: #A8A29E; --border: #44403C; --accent: #D7CCC8; --page-edge: #352F2D; --placeholder: #78716C; --shadow-float: 0 20px 40px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.3); --shadow-card: 0 4px 15px rgba(0,0,0,0.3); --bg-texture: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 0); --status-reading-bg: #3B2A1A; --status-reading-text: #FDBA74; --status-read-bg: #273A2B; --status-read-text: #86EFAC; --status-unread-bg: #44403C; --status-unread-text: #D6D3D1; }
-        
-        [data-theme="velvet"] { --font-heading: 'Lora', serif; --bg-main: #1A1315; --surface: #261B1E; --ink: #F8ECEE; --ink-muted: #B3929A; --border: #3D292F; --accent: #D4849A; --page-edge: #312125; --placeholder: #8A6A72; --shadow-float: 0 20px 40px rgba(0,0,0,0.6), 0 4px 12px rgba(0,0,0,0.4); --shadow-card: 0 4px 15px rgba(0,0,0,0.4); --bg-texture: radial-gradient(rgba(212,132,154,0.04) 1px, transparent 0); --status-reading-bg: #3A2027; --status-reading-text: #ECA8B9; --status-read-bg: #242B27; --status-read-text: #8DB59C; --status-unread-bg: #322327; --status-unread-text: #B3929A; }
-        
-        [data-theme="lavender"] { --font-heading: 'Lora', serif; --bg-main: #F4F0FB; --surface: #FFFFFF; --ink: #4B3A5A; --ink-muted: #9D8BB0; --border: #E6DDF2; --accent: #8A64B8; --page-edge: #EFE9F6; --placeholder: #C5B9D4; --bg-texture: radial-gradient(rgba(138,100,184,0.04) 1px, transparent 0); --status-reading-bg: #EDE6F5; --status-reading-text: #6A4B91; --status-read-bg: #E6F0E9; --status-read-text: #456B52; --status-unread-bg: #F0EDF5; --status-unread-text: #9D8BB0; }
-        
-        /* 🔥 НОВА ЦУКРОВА ВАТА 🔥 */
+        /* 🔥 ПОВНІСТЮ НОВА ЦУКРОВА ВАТА 🔥 */
         [data-theme="cotton-candy"] { 
-            --font-heading: 'Plus Jakarta Sans', sans-serif; 
-            /* Ніжний градієнт фону */
-            --bg-texture: linear-gradient(135deg, #FFE4E6 0%, #E0F2FE 100%); 
-            --bg-size: cover;
-            --bg-main: #FFE4E6; /* Резервний колір */
+            --font-heading: 'Lora', serif; 
+            --bg-main: #FCF9FA; 
             --surface: #FFFFFF; 
-            --ink: #312E81; /* Темно-сливовий/індиго для контрасту */
-            --ink-muted: #818CF8; 
-            --border: #FBCFE8; 
-            --accent: #38BDF8; /* Яскраво-блакитний акцент */
-            --page-edge: #FCE7F3; 
-            --placeholder: #C7D2FE; 
+            --ink: #4A3F45; /* Теплий темний відтінок замість різкого синього */
+            --ink-muted: #A0949B; 
+            --border: #F7E9F0; 
+            --accent: #FF9EBB; /* Ніжний полунично-рожевий */
+            --page-edge: #F4F8FA; 
+            --placeholder: #D3C9D0; 
             
-            --status-reading-bg: #E0F2FE; --status-reading-text: #0284C7; 
-            --status-read-bg: #DCFCE7; --status-read-text: #166534; 
-            --status-unread-bg: #FCE7F3; --status-unread-text: #BE185D;
+            /* Ефект двох пастельних хмаринок по кутах екрану */
+            --bg-texture: radial-gradient(circle at 0% 0%, #FFE5F1 0%, transparent 50%), radial-gradient(circle at 100% 100%, #E3F4FE 0%, transparent 50%);
+            --bg-size: 100% 100%;
             
-            --shadow-float: 0 20px 40px rgba(244, 114, 182, 0.15), 0 4px 12px rgba(56, 189, 248, 0.1);
-            --shadow-card: 0 4px 15px rgba(244, 114, 182, 0.08);
+            --status-reading-bg: #E3F4FE; --status-reading-text: #428BCA; 
+            --status-read-bg: #FFE5F1; --status-read-text: #C45B8C; 
+            --status-unread-bg: #F4F3F5; --status-unread-text: #A0949B;
+            
+            /* Тіні мають легкий рожевий і блакитний відблиск */
+            --shadow-float: 0 20px 40px rgba(255, 158, 187, 0.15), 0 4px 12px rgba(137, 207, 240, 0.1);
+            --shadow-card: 0 4px 15px rgba(255, 158, 187, 0.08);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: var(--font-body); 
-            background-color: var(--bg-main); 
-            color: var(--ink);
+            font-family: var(--font-body); background-color: var(--bg-main); color: var(--ink);
             line-height: 1.6; padding: 3rem 1.5rem; max-width: 900px; margin: 0 auto;
             -webkit-font-smoothing: antialiased; 
             background-image: var(--bg-texture); 
@@ -92,7 +81,7 @@
         }
         .theme-btn { width: 22px; height: 22px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: var(--transition); }
         .theme-btn:hover { transform: scale(1.2); }
-        .theme-btn.active { border-color: var(--accent); transform: scale(1.2); box-shadow: 0 0 0 3px var(--bg-main); }
+        .theme-btn.active { border-color: var(--accent); transform: scale(1.2); box-shadow: 0 0 0 2px var(--bg-main); }
 
         #theme-paper { background: #F3F3F1; border: 1px solid #E5E5E0; } 
         #theme-minimal { background: #FFFFFF; border: 1px solid #DEE2E6; }
@@ -101,7 +90,7 @@
         #theme-mocha { background: #292524; border: 1px solid #44403C; } 
         #theme-velvet { background: #261B1E; border: 1px solid #D4849A; }
         #theme-lavender { background: #F4F0FB; border: 1px solid #8A64B8; } 
-        #theme-cotton-candy { background: linear-gradient(135deg, #FBCFE8, #BAE6FD); border: 1px solid #F472B6; }
+        #theme-cotton-candy { background: linear-gradient(135deg, #FFE5F1 50%, #E3F4FE 50%); border: 1px solid #FBCFE8; }
 
         .control-panel { background: var(--surface); padding: 2rem; border-radius: var(--radius-card); box-shadow: var(--shadow-card); margin-bottom: 4rem; border: 1px solid var(--border); transition: var(--transition-theme); }
         .nav-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
@@ -116,10 +105,10 @@
         .main-input:focus { border-bottom-color: var(--accent); }
         .main-input::placeholder { color: var(--placeholder); font-weight: 400; }
         .btn-add { background: var(--accent); color: var(--surface); border: none; padding: 0 2rem; border-radius: 100px; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; transition: var(--transition); height: 48px; font-weight: 600; font-family: inherit; }
-        .btn-add:hover { transform: translateY(-2px); filter: brightness(1.1); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        .btn-add:hover { transform: translateY(-2px); filter: brightness(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
 
         .grid { display: flex; flex-direction: column; gap: 2rem; padding-bottom: 4rem; }
-        .card { background: var(--surface); border-radius: var(--radius-card); display: flex; flex-direction: row; padding: 2rem; transition: var(--transition-theme), transform 0.4s ease, box-shadow 0.4s ease; animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; box-shadow: var(--shadow-card); border: 1px solid var(--border); }
+        .card { background: var(--surface); border-radius: var(--radius-card); display: flex; flex-direction: row; padding: 2rem; transition: var(--transition-theme), transform 0.4s ease; animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; box-shadow: var(--shadow-card); border: 1px solid var(--border); }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-float); }
 
@@ -184,14 +173,14 @@
         
         <div class="header-right">
             <div class="theme-selector" title="Оберіть тему">
-                <button class="theme-btn" id="theme-paper" onclick="changeTheme('paper')" title="Папір"></button>
-                <button class="theme-btn" id="theme-minimal" onclick="changeTheme('minimal')" title="Мінімалізм"></button>
-                <button class="theme-btn" id="theme-sage" onclick="changeTheme('sage')" title="Шавлія"></button>
-                <button class="theme-btn" id="theme-lavender" onclick="changeTheme('lavender')" title="Лаванда"></button>
-                <button class="theme-btn" id="theme-cotton-candy" onclick="changeTheme('cotton-candy')" title="Цукрова вата"></button>
-                <button class="theme-btn" id="theme-midnight" onclick="changeTheme('midnight')" title="Північ"></button>
-                <button class="theme-btn" id="theme-mocha" onclick="changeTheme('mocha')" title="Мокко"></button>
-                <button class="theme-btn" id="theme-velvet" onclick="changeTheme('velvet')" title="Оксамит"></button>
+                <button class="theme-btn" id="theme-paper" onclick="changeTheme('paper')"></button>
+                <button class="theme-btn" id="theme-minimal" onclick="changeTheme('minimal')"></button>
+                <button class="theme-btn" id="theme-sage" onclick="changeTheme('sage')"></button>
+                <button class="theme-btn" id="theme-lavender" onclick="changeTheme('lavender')"></button>
+                <button class="theme-btn" id="theme-cotton-candy" onclick="changeTheme('cotton-candy')"></button>
+                <button class="theme-btn" id="theme-midnight" onclick="changeTheme('midnight')"></button>
+                <button class="theme-btn" id="theme-mocha" onclick="changeTheme('mocha')"></button>
+                <button class="theme-btn" id="theme-velvet" onclick="changeTheme('velvet')"></button>
             </div>
         </div>
     </header>
@@ -250,6 +239,7 @@
 
         lucide.createIcons();
 
+        // --- ЛОГІКА ТЕМ ---
         window.changeTheme = function(themeName) {
             document.documentElement.setAttribute('data-theme', themeName);
             localStorage.setItem('min_library_theme', themeName);
@@ -264,6 +254,7 @@
         let books = [];
         let isListeningToDB = false;
 
+        // --- ТИХИЙ ВХІД ТА ЗАВАНТАЖЕННЯ ДАНИХ ---
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 startListening();
