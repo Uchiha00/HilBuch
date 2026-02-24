@@ -11,113 +11,75 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <style>
-        /* 1. ПАПІР */
+        /* Теми */
         :root {
             --font-heading: 'Lora', serif; --font-body: 'Plus Jakarta Sans', sans-serif;
             --bg-main: #F3F3F1; --surface: #FFFFFF; --ink: #111111; --ink-muted: #6B6B66;
             --border: #E5E5E0; --accent: #111111; --page-edge: #f0f0f0; --placeholder: #C4C4C0;
-            --shadow-float: 0 14px 35px rgba(0,0,0,0.04), 0 4px 10px rgba(0,0,0,0.02);
-            --shadow-card: 0 4px 15px rgba(0,0,0,0.02);
-            --bg-texture: radial-gradient(rgba(0,0,0,0.02) 1px, transparent 0);
+            --shadow-float: 0 20px 40px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.03);
+            --shadow-card: 0 4px 15px rgba(0,0,0,0.03); 
+            --bg-texture: radial-gradient(rgba(0,0,0,0.03) 1px, transparent 0);
+            --bg-size: 32px 32px;
             
-            --status-reading-bg: #E8F0EA; --status-reading-text: #2D5A3C;
-            --status-read-bg: #EFE9E5; --status-read-text: #7A4B3A;
+            --status-reading-bg: #E8F0EA; --status-reading-text: #2D5A3C; 
+            --status-read-bg: #EFE9E5; --status-read-text: #7A4B3A; 
             --status-unread-bg: #F0F0F0; --status-unread-text: #555555;
             
             --radius-card: 24px; --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            --transition-theme: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+            --transition-theme: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
         }
 
-        /* 2. МІНІМАЛІЗМ */
-        [data-theme="minimal"] {
-            --font-heading: 'Plus Jakarta Sans', sans-serif; --bg-main: #F8F9FA; --surface: #FFFFFF;
-            --ink: #212529; --ink-muted: #ADB5BD; --border: #DEE2E6; --accent: #0D6EFD;
-            --page-edge: #E9ECEF; --bg-texture: none;
-            --status-reading-bg: #E7F1FF; --status-reading-text: #0D6EFD;
-            --status-read-bg: #D1E7DD; --status-read-text: #0F5132;
-            --status-unread-bg: #F8F9FA; --status-unread-text: #6C757D;
-        }
-
-        /* 3. ШАВЛІЯ */
-        [data-theme="sage"] {
-            --font-heading: 'Lora', serif; --bg-main: #F2F5F3; --surface: #FCFDFD;
-            --ink: #2B3A32; --ink-muted: #798B81; --border: #DEE6E1; --accent: #4A6756;
-            --page-edge: #EBF0ED; --bg-texture: radial-gradient(rgba(74,103,86,0.03) 1px, transparent 0);
-            --status-reading-bg: #E1EBE5; --status-reading-text: #375342;
-            --status-read-bg: #E9E6D8; --status-read-text: #60573B;
-            --status-unread-bg: #EDF0EE; --status-unread-text: #798B81;
-        }
-
-        /* 4. ПІВНІЧ */
-        [data-theme="midnight"] {
-            --font-heading: 'Plus Jakarta Sans', sans-serif; --bg-main: #121212; --surface: #1E1E1E;
-            --ink: #F8F9FA; --ink-muted: #ADB5BD; --border: #2D2D2D; --accent: #FFFFFF;
-            --page-edge: #2A2A2A; --placeholder: #6C757D;
-            --shadow-float: 0 14px 35px rgba(0,0,0,0.4), 0 4px 10px rgba(0,0,0,0.2); --shadow-card: 0 4px 15px rgba(0,0,0,0.2);
-            --bg-texture: none;
-            --status-reading-bg: #032830; --status-reading-text: #38BDF8;
-            --status-read-bg: #06402B; --status-read-text: #4ADE80;
-            --status-unread-bg: #2D2D2D; --status-unread-text: #ADB5BD;
-        }
-
-        /* 5. МОККО */
-        [data-theme="mocha"] {
-            --font-heading: 'Lora', serif; --bg-main: #1C1917; --surface: #292524;
-            --ink: #F5F5F4; --ink-muted: #A8A29E; --border: #44403C; --accent: #D7CCC8;
-            --page-edge: #352F2D; --placeholder: #78716C;
-            --shadow-float: 0 14px 35px rgba(0,0,0,0.4), 0 4px 10px rgba(0,0,0,0.2); --shadow-card: 0 4px 15px rgba(0,0,0,0.2);
-            --bg-texture: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 0);
-            --status-reading-bg: #3B2A1A; --status-reading-text: #FDBA74;
-            --status-read-bg: #273A2B; --status-read-text: #86EFAC;
-            --status-unread-bg: #44403C; --status-unread-text: #D6D3D1;
-        }
-
-        /* 6. ОКСАМИТ */
-        [data-theme="velvet"] {
-            --font-heading: 'Lora', serif; --bg-main: #1A1315; --surface: #261B1E;
-            --ink: #F8ECEE; --ink-muted: #B3929A; --border: #3D292F; --accent: #D4849A;
-            --page-edge: #312125; --placeholder: #8A6A72;
-            --shadow-float: 0 14px 35px rgba(0,0,0,0.5), 0 4px 10px rgba(0,0,0,0.3); --shadow-card: 0 4px 15px rgba(0,0,0,0.3);
-            --bg-texture: radial-gradient(rgba(212,132,154,0.03) 1px, transparent 0);
-            --status-reading-bg: #3A2027; --status-reading-text: #ECA8B9;
-            --status-read-bg: #242B27; --status-read-text: #8DB59C;
-            --status-unread-bg: #322327; --status-unread-text: #B3929A;
-        }
-
-        /* 7. ЛАВАНДА */
-        [data-theme="lavender"] {
-            --font-heading: 'Lora', serif; --bg-main: #F4F0FB; --surface: #FFFFFF;
-            --ink: #4B3A5A; --ink-muted: #9D8BB0; --border: #E6DDF2; --accent: #8A64B8;
-            --page-edge: #EFE9F6; --placeholder: #C5B9D4;
-            --bg-texture: radial-gradient(rgba(138,100,184,0.03) 1px, transparent 0);
-            --status-reading-bg: #EDE6F5; --status-reading-text: #6A4B91;
-            --status-read-bg: #E6F0E9; --status-read-text: #456B52;
-            --status-unread-bg: #F0EDF5; --status-unread-text: #9D8BB0;
-        }
-
-        /* 8. ЦУКРОВА ВАТА */
-        [data-theme="cotton-candy"] {
-            --font-heading: 'Plus Jakarta Sans', sans-serif; --bg-main: #EAF4F4; --surface: #FFF0F5;
-            --ink: #2B4C59; --ink-muted: #7E9FA8; --border: #DCECEC; --accent: #F48FB1;
-            --page-edge: #FDE8EF; --placeholder: #B8CED4;
-            --bg-texture: none;
-            --status-reading-bg: #E0F0F0; --status-reading-text: #2B4C59;
-            --status-read-bg: #E8F5E9; --status-read-text: #2E7D32;
-            --status-unread-bg: #F5E6EC; --status-unread-text: #D87593;
+        [data-theme="minimal"] { --font-heading: 'Plus Jakarta Sans', sans-serif; --bg-main: #F8F9FA; --surface: #FFFFFF; --ink: #212529; --ink-muted: #ADB5BD; --border: #DEE2E6; --accent: #0D6EFD; --page-edge: #E9ECEF; --bg-texture: none; --status-reading-bg: #E7F1FF; --status-reading-text: #0D6EFD; --status-read-bg: #D1E7DD; --status-read-text: #0F5132; --status-unread-bg: #F8F9FA; --status-unread-text: #6C757D; }
+        
+        [data-theme="sage"] { --font-heading: 'Lora', serif; --bg-main: #F2F5F3; --surface: #FCFDFD; --ink: #2B3A32; --ink-muted: #798B81; --border: #DEE6E1; --accent: #4A6756; --page-edge: #EBF0ED; --bg-texture: radial-gradient(rgba(74,103,86,0.04) 1px, transparent 0); --status-reading-bg: #E1EBE5; --status-reading-text: #375342; --status-read-bg: #E9E6D8; --status-read-text: #60573B; --status-unread-bg: #EDF0EE; --status-unread-text: #798B81; }
+        
+        [data-theme="midnight"] { --font-heading: 'Plus Jakarta Sans', sans-serif; --bg-main: #121212; --surface: #1E1E1E; --ink: #F8F9FA; --ink-muted: #ADB5BD; --border: #2D2D2D; --accent: #FFFFFF; --page-edge: #2A2A2A; --placeholder: #6C757D; --shadow-float: 0 20px 40px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.3); --shadow-card: 0 4px 15px rgba(0,0,0,0.3); --bg-texture: none; --status-reading-bg: #032830; --status-reading-text: #38BDF8; --status-read-bg: #06402B; --status-read-text: #4ADE80; --status-unread-bg: #2D2D2D; --status-unread-text: #ADB5BD; }
+        
+        [data-theme="mocha"] { --font-heading: 'Lora', serif; --bg-main: #1C1917; --surface: #292524; --ink: #F5F5F4; --ink-muted: #A8A29E; --border: #44403C; --accent: #D7CCC8; --page-edge: #352F2D; --placeholder: #78716C; --shadow-float: 0 20px 40px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.3); --shadow-card: 0 4px 15px rgba(0,0,0,0.3); --bg-texture: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 0); --status-reading-bg: #3B2A1A; --status-reading-text: #FDBA74; --status-read-bg: #273A2B; --status-read-text: #86EFAC; --status-unread-bg: #44403C; --status-unread-text: #D6D3D1; }
+        
+        [data-theme="velvet"] { --font-heading: 'Lora', serif; --bg-main: #1A1315; --surface: #261B1E; --ink: #F8ECEE; --ink-muted: #B3929A; --border: #3D292F; --accent: #D4849A; --page-edge: #312125; --placeholder: #8A6A72; --shadow-float: 0 20px 40px rgba(0,0,0,0.6), 0 4px 12px rgba(0,0,0,0.4); --shadow-card: 0 4px 15px rgba(0,0,0,0.4); --bg-texture: radial-gradient(rgba(212,132,154,0.04) 1px, transparent 0); --status-reading-bg: #3A2027; --status-reading-text: #ECA8B9; --status-read-bg: #242B27; --status-read-text: #8DB59C; --status-unread-bg: #322327; --status-unread-text: #B3929A; }
+        
+        [data-theme="lavender"] { --font-heading: 'Lora', serif; --bg-main: #F4F0FB; --surface: #FFFFFF; --ink: #4B3A5A; --ink-muted: #9D8BB0; --border: #E6DDF2; --accent: #8A64B8; --page-edge: #EFE9F6; --placeholder: #C5B9D4; --bg-texture: radial-gradient(rgba(138,100,184,0.04) 1px, transparent 0); --status-reading-bg: #EDE6F5; --status-reading-text: #6A4B91; --status-read-bg: #E6F0E9; --status-read-text: #456B52; --status-unread-bg: #F0EDF5; --status-unread-text: #9D8BB0; }
+        
+        /* 🔥 НОВА ЦУКРОВА ВАТА 🔥 */
+        [data-theme="cotton-candy"] { 
+            --font-heading: 'Plus Jakarta Sans', sans-serif; 
+            /* Ніжний градієнт фону */
+            --bg-texture: linear-gradient(135deg, #FFE4E6 0%, #E0F2FE 100%); 
+            --bg-size: cover;
+            --bg-main: #FFE4E6; /* Резервний колір */
+            --surface: #FFFFFF; 
+            --ink: #312E81; /* Темно-сливовий/індиго для контрасту */
+            --ink-muted: #818CF8; 
+            --border: #FBCFE8; 
+            --accent: #38BDF8; /* Яскраво-блакитний акцент */
+            --page-edge: #FCE7F3; 
+            --placeholder: #C7D2FE; 
+            
+            --status-reading-bg: #E0F2FE; --status-reading-text: #0284C7; 
+            --status-read-bg: #DCFCE7; --status-read-text: #166534; 
+            --status-unread-bg: #FCE7F3; --status-unread-text: #BE185D;
+            
+            --shadow-float: 0 20px 40px rgba(244, 114, 182, 0.15), 0 4px 12px rgba(56, 189, 248, 0.1);
+            --shadow-card: 0 4px 15px rgba(244, 114, 182, 0.08);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: var(--font-body); background-color: var(--bg-main); color: var(--ink);
+            font-family: var(--font-body); 
+            background-color: var(--bg-main); 
+            color: var(--ink);
             line-height: 1.6; padding: 3rem 1.5rem; max-width: 900px; margin: 0 auto;
-            -webkit-font-smoothing: antialiased; background-image: var(--bg-texture); background-size: 32px 32px;
+            -webkit-font-smoothing: antialiased; 
+            background-image: var(--bg-texture); 
+            background-size: var(--bg-size);
+            background-attachment: fixed;
             transition: var(--transition-theme);
         }
 
         header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1.5rem; }
         .header-left { display: flex; flex-direction: column; gap: 0.5rem; }
-
         h1 { font-family: var(--font-heading); font-size: 2.8rem; font-weight: 500; letter-spacing: -0.02em; margin: 0; transition: var(--transition-theme); }
         .stats { font-size: 0.9rem; color: var(--ink-muted); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
 
@@ -130,140 +92,82 @@
         }
         .theme-btn { width: 22px; height: 22px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: var(--transition); }
         .theme-btn:hover { transform: scale(1.2); }
-        .theme-btn.active { border-color: var(--accent); transform: scale(1.2); box-shadow: 0 0 0 2px var(--bg-main); }
+        .theme-btn.active { border-color: var(--accent); transform: scale(1.2); box-shadow: 0 0 0 3px var(--bg-main); }
 
-        #theme-paper { background: #F3F3F1; border: 1px solid #E5E5E0; }
+        #theme-paper { background: #F3F3F1; border: 1px solid #E5E5E0; } 
         #theme-minimal { background: #FFFFFF; border: 1px solid #DEE2E6; }
-        #theme-sage { background: #E1EBE5; border: 1px solid #4A6756; }
+        #theme-sage { background: #E1EBE5; border: 1px solid #4A6756; } 
         #theme-midnight { background: #121212; border: 1px solid #343A40; }
-        #theme-mocha { background: #292524; border: 1px solid #44403C; }
+        #theme-mocha { background: #292524; border: 1px solid #44403C; } 
         #theme-velvet { background: #261B1E; border: 1px solid #D4849A; }
-        #theme-lavender { background: #F4F0FB; border: 1px solid #8A64B8; }
-        #theme-cotton-candy { background: #FFF0F5; border: 1px solid #F48FB1; }
+        #theme-lavender { background: #F4F0FB; border: 1px solid #8A64B8; } 
+        #theme-cotton-candy { background: linear-gradient(135deg, #FBCFE8, #BAE6FD); border: 1px solid #F472B6; }
 
-        .control-panel {
-            background: var(--surface); padding: 2rem; border-radius: var(--radius-card);
-            box-shadow: var(--shadow-card); margin-bottom: 4rem; border: 1px solid var(--border); transition: var(--transition-theme);
-        }
-
-        .nav-row {
-            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;
-            margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);
-        }
-
+        .control-panel { background: var(--surface); padding: 2rem; border-radius: var(--radius-card); box-shadow: var(--shadow-card); margin-bottom: 4rem; border: 1px solid var(--border); transition: var(--transition-theme); }
+        .nav-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
         .segmented-control { display: inline-flex; background: var(--bg-main); padding: 4px; border-radius: 14px; transition: var(--transition-theme); }
-        .seg-btn {
-            padding: 8px 20px; background: transparent; border: none; border-radius: 10px;
-            color: var(--ink-muted); cursor: pointer; font-size: 0.9rem; font-weight: 600;
-            transition: var(--transition); display: flex; align-items: center; gap: 8px; font-family: inherit;
-        }
+        .seg-btn { padding: 8px 20px; background: transparent; border: none; border-radius: 10px; color: var(--ink-muted); cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: var(--transition); display: flex; align-items: center; gap: 8px; font-family: inherit; }
         .seg-btn.active { background: var(--surface); color: var(--ink); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
 
         .add-form { display: flex; gap: 1.5rem; align-items: flex-end; flex-wrap: wrap; }
         .input-group { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; min-width: 200px; }
-        .input-group label { font-size: 0.75rem; color: var(--ink-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
-        
-        .main-input {
-            padding: 0.85rem 0; border: none; border-bottom: 2px solid var(--border); font-size: 1.1rem;
-            background: transparent; outline: none; transition: var(--transition); font-family: inherit; color: var(--ink);
-        }
+        .input-group label { font-size: 0.75rem; color: var(--ink-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; transition: var(--transition-theme); }
+        .main-input { padding: 0.85rem 0; border: none; border-bottom: 2px solid var(--border); font-size: 1.1rem; background: transparent; outline: none; transition: var(--transition); font-family: inherit; color: var(--ink); }
         .main-input:focus { border-bottom-color: var(--accent); }
         .main-input::placeholder { color: var(--placeholder); font-weight: 400; }
-
-        .btn-add {
-            background: var(--accent); color: var(--surface); border: none; padding: 0 2rem; border-radius: 100px;
-            cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; transition: var(--transition);
-            height: 48px; font-weight: 600; font-family: inherit;
-        }
+        .btn-add { background: var(--accent); color: var(--surface); border: none; padding: 0 2rem; border-radius: 100px; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; transition: var(--transition); height: 48px; font-weight: 600; font-family: inherit; }
         .btn-add:hover { transform: translateY(-2px); filter: brightness(1.1); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
 
         .grid { display: flex; flex-direction: column; gap: 2rem; padding-bottom: 4rem; }
-
-        .card {
-            background: var(--surface); border-radius: var(--radius-card); display: flex; flex-direction: row;
-            padding: 2rem; transition: var(--transition-theme), transform 0.4s ease;
-            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; box-shadow: var(--shadow-card); border: 1px solid var(--border);
-        }
-
+        .card { background: var(--surface); border-radius: var(--radius-card); display: flex; flex-direction: row; padding: 2rem; transition: var(--transition-theme), transform 0.4s ease, box-shadow 0.4s ease; animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; box-shadow: var(--shadow-card); border: 1px solid var(--border); }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-float); }
 
         .cover-container { position: relative; width: 150px; flex-shrink: 0; margin-right: 2.5rem; perspective: 1000px; }
-        .cover-wrapper {
-            position: relative; width: 100%; padding-bottom: 150%; border-radius: 2px 8px 8px 2px;
-            box-shadow: -4px 0 10px rgba(0,0,0,0.1), 8px 10px 25px rgba(0,0,0,0.2);
-            transition: transform 0.5s ease; transform-style: preserve-3d; background: var(--bg-main);
-        }
+        .cover-wrapper { position: relative; width: 100%; padding-bottom: 150%; border-radius: 2px 8px 8px 2px; box-shadow: -4px 0 10px rgba(0,0,0,0.1), 8px 10px 25px rgba(0,0,0,0.2); transition: transform 0.5s ease; transform-style: preserve-3d; background: var(--bg-main); }
         .card:hover .cover-wrapper { transform: scale(1.02) rotateY(-5deg); }
         .cover { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 2px 8px 8px 2px; z-index: 2; }
-        .cover-spine {
-            position: absolute; left: 0; top: 0; bottom: 0; width: 12px; z-index: 3;
-            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 20%, rgba(255,255,255,0) 100%); border-radius: 2px 0 0 2px;
-        }
-        .cover-pages {
-            position: absolute; right: -5px; top: 3px; bottom: 3px; width: 5px; z-index: 1;
-            background: var(--page-edge); border-radius: 0 4px 4px 0; box-shadow: inset 1px 0 3px rgba(0,0,0,0.1);
-        }
-
-        .edit-cover-btn {
-            position: absolute; inset: 0; z-index: 4; border-radius: 2px 8px 8px 2px; background: rgba(17, 17, 17, 0.6); color: white;
-            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;
-            opacity: 0; cursor: pointer; border: none; transition: var(--transition); backdrop-filter: blur(4px); font-size: 0.8rem; font-weight: 600; font-family: inherit;
-        }
+        .cover-spine { position: absolute; left: 0; top: 0; bottom: 0; width: 12px; z-index: 3; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 20%, rgba(255,255,255,0) 100%); border-radius: 2px 0 0 2px; }
+        .cover-pages { position: absolute; right: -5px; top: 3px; bottom: 3px; width: 5px; z-index: 1; background: var(--page-edge); border-radius: 0 4px 4px 0; box-shadow: inset 1px 0 3px rgba(0,0,0,0.1); }
+        .edit-cover-btn { position: absolute; inset: 0; z-index: 4; border-radius: 2px 8px 8px 2px; background: rgba(17, 17, 17, 0.6); color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; opacity: 0; cursor: pointer; border: none; transition: var(--transition); backdrop-filter: blur(4px); font-size: 0.8rem; font-weight: 600; font-family: inherit; }
         .cover-wrapper:hover .edit-cover-btn { opacity: 1; }
 
         .card-content { display: flex; flex-direction: column; flex: 1; position: relative; justify-content: center; }
-        
         .editable-input { width: 100%; background: transparent; border: 1px solid transparent; outline: none; padding: 0; margin: 0; transition: var(--transition-theme); border-radius: 8px; color: var(--ink); }
         .editable-input:focus { background: var(--bg-main); padding: 0.25rem 0.5rem; margin: -0.25rem -0.5rem; border-color: var(--border); }
-        
         .book-title-input { font-family: var(--font-heading); font-weight: 600; font-size: 2rem; line-height: 1.15; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
         .book-author-input { color: var(--ink-muted); font-size: 1.1rem; font-weight: 500; font-family: var(--font-body); }
 
         .note-container { margin-top: 1.5rem; flex: 1; }
-        .note-input {
-            width: 100%; padding: 0; font-size: 0.95rem; border: none; background: transparent; color: var(--ink);
-            resize: vertical; min-height: 40px; transition: var(--transition-theme); font-family: inherit; line-height: 1.7;
-        }
+        .note-input { width: 100%; padding: 0; font-size: 0.95rem; border: none; background: transparent; color: var(--ink); resize: vertical; min-height: 40px; transition: var(--transition-theme); font-family: inherit; line-height: 1.7; }
         .note-input:hover { background: var(--bg-main); border-radius: 8px; padding: 0.5rem; margin: -0.5rem; }
         .note-input:focus { outline: none; background: var(--bg-main); padding: 0.75rem; margin: -0.75rem; border-radius: 12px; box-shadow: inset 0 0 0 1px var(--border); }
         .note-input::placeholder { color: var(--placeholder); font-style: italic; }
 
         .card-footer { margin-top: 2rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
         .status-wrapper { position: relative; }
-        .status-select {
-            padding: 0.5rem 1rem 0.5rem 2.2rem; border: none; border-radius: 100px; font-size: 0.85rem; font-weight: 600; cursor: pointer; outline: none; transition: var(--transition-theme); font-family: inherit; appearance: none;
-        }
+        .status-select { padding: 0.5rem 1rem 0.5rem 2.2rem; border: none; border-radius: 100px; font-size: 0.85rem; font-weight: 600; cursor: pointer; outline: none; transition: var(--transition-theme); font-family: inherit; appearance: none; }
         .status-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); pointer-events: none; width: 14px; color: currentColor; }
-        
         .status-select.unread { background: var(--status-unread-bg); color: var(--status-unread-text); }
         .status-select.reading { background: var(--status-reading-bg); color: var(--status-reading-text); }
         .status-select.read { background: var(--status-read-bg); color: var(--status-read-text); }
-
         .page-tracker { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--ink-muted); font-weight: 600; background: var(--bg-main); padding: 0.35rem 0.75rem; border-radius: 100px; transition: var(--transition-theme); }
-        .page-input { width: 50px; font-size: 0.9rem; text-align: center; border: none; background: transparent; font-weight: 700; color: var(--ink); outline: none; border-bottom: 1px dashed var(--ink-muted); }
+        .page-input { width: 50px; font-size: 0.9rem; text-align: center; border: none; background: transparent; font-weight: 700; color: var(--ink); outline: none; border-bottom: 1px dashed var(--ink-muted); transition: var(--transition-theme); }
 
-        .btn-delete {
-            position: absolute; top: -0.5rem; right: -0.5rem; background: var(--surface); width: 40px; height: 40px;
-            display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); border-radius: 50%;
-            color: var(--ink-muted); cursor: pointer; transition: var(--transition); opacity: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
+        .btn-delete { position: absolute; top: -0.5rem; right: -0.5rem; background: var(--surface); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); border-radius: 50%; color: var(--ink-muted); cursor: pointer; transition: var(--transition); opacity: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
         .card:hover .btn-delete { opacity: 1; }
-        .btn-delete:hover { color: #E03131; border-color: #E03131; transform: scale(1.1); }
+        .btn-delete:hover { color: #E03131; border-color: #E03131; transform: scale(1.1); background: #FFF5F5; }
 
-        .empty-state { text-align: center; padding: 6rem 2rem; color: var(--ink-muted); }
+        .empty-state { text-align: center; padding: 6rem 2rem; color: var(--ink-muted); transition: var(--transition-theme); }
         .empty-state h3 { font-family: var(--font-heading); font-size: 1.5rem; color: var(--ink); margin: 1rem 0 0.5rem; }
 
+        #global-loader { display: flex; align-items: center; justify-content: center; padding: 4rem; color: var(--ink-muted); }
+
         @media (max-width: 700px) {
-            .card { flex-direction: column; padding: 1.5rem; }
-            .cover-container { width: 180px; margin: 0 auto 2rem; }
-            .book-title-input { text-align: center; font-size: 1.6rem; }
-            .book-author-input { text-align: center; }
-            .card-footer { justify-content: center; }
-            .btn-delete { top: 1rem; right: 1rem; opacity: 1; }
-            .nav-row { justify-content: center; }
-            header { justify-content: center; text-align: center; }
-            .header-right { align-items: center; }
+            .card { flex-direction: column; padding: 1.5rem; } .cover-container { width: 180px; margin: 0 auto 2rem; }
+            .book-title-input { text-align: center; font-size: 1.6rem; } .book-author-input { text-align: center; }
+            .card-footer { justify-content: center; } .btn-delete { top: 1rem; right: 1rem; opacity: 1; }
+            .nav-row { justify-content: center; } header { justify-content: center; text-align: center; } .header-right { align-items: center; }
             .theme-selector { justify-content: center; }
         }
     </style>
@@ -295,21 +199,13 @@
     <div class="control-panel">
         <div class="nav-row">
             <div class="segmented-control">
-                <button class="seg-btn active" onclick="setOwner('sofa')" id="owner-sofa">
-                    <i data-lucide="user" style="width: 16px;"></i> Софочка
-                </button>
-                <button class="seg-btn" onclick="setOwner('roma')" id="owner-roma">
-                    <i data-lucide="user" style="width: 16px;"></i> Ромашечка
-                </button>
+                <button class="seg-btn active" onclick="setOwner('sofa')" id="owner-sofa"><i data-lucide="user" style="width: 16px;"></i> Софочка</button>
+                <button class="seg-btn" onclick="setOwner('roma')" id="owner-roma"><i data-lucide="user" style="width: 16px;"></i> Ромашечка</button>
             </div>
             
             <div class="segmented-control">
-                <button class="seg-btn active" onclick="setList('library')" id="list-library">
-                    <i data-lucide="library-big" style="width: 16px;"></i> Полиця
-                </button>
-                <button class="seg-btn" onclick="setList('wishlist')" id="list-wishlist">
-                    <i data-lucide="sparkles" style="width: 16px;"></i> Бажане
-                </button>
+                <button class="seg-btn active" onclick="setList('library')" id="list-library"><i data-lucide="library-big" style="width: 16px;"></i> Полиця</button>
+                <button class="seg-btn" onclick="setList('wishlist')" id="list-wishlist"><i data-lucide="sparkles" style="width: 16px;"></i> Бажане</button>
             </div>
         </div>
 
@@ -322,21 +218,22 @@
                 <label>Автор видання</label>
                 <input type="text" id="new-author" class="main-input" placeholder="Джордж Орвелл" autocomplete="off">
             </div>
-            <button class="btn-add" onclick="addBook()">
-                Додати до колекції
-            </button>
+            <button class="btn-add" onclick="addBook()">Додати до колекції</button>
         </div>
     </div>
 
     <main>
-        <div class="grid" id="book-grid"></div>
+        <div id="global-loader">
+            <i data-lucide="loader-2" class="lucide-spin" style="width: 24px; height: 24px;"></i>
+        </div>
+        <div class="grid" id="book-grid" style="display: none;"></div>
     </main>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
         import { getDatabase, ref, set, update, remove, onValue } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
 
-        // ТВОЇ КЛЮЧІ FIREBASE
         const firebaseConfig = {
             apiKey: "AIzaSyC4J3DrTBIpkw52Rz9HdMiWJnUcfunP4uo",
             authDomain: "sofaromalibrary.firebaseapp.com",
@@ -344,18 +241,15 @@
             storageBucket: "sofaromalibrary.firebasestorage.app",
             messagingSenderId: "755053712434",
             appId: "1:755053712434:web:056b8ea168365f7527d82b",
-            // Оскільки ти в Німеччині (Дрезден), база даних скоріш за все створена в європейському регіоні.
-            // Firebase іноді забуває додати цей рядок у сніпет:
             databaseURL: "https://sofaromalibrary-default-rtdb.europe-west1.firebasedatabase.app"
         };
 
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
-        const booksRef = ref(db, 'books');
+        const auth = getAuth(app);
 
         lucide.createIcons();
 
-        // --- ЛОГІКА ТЕМ (Локально) ---
         window.changeTheme = function(themeName) {
             document.documentElement.setAttribute('data-theme', themeName);
             localStorage.setItem('min_library_theme', themeName);
@@ -367,19 +261,35 @@
 
         let currentOwner = 'sofa'; 
         let currentList = 'library';
-        let books = []; // Тепер це лише локальна копія, усе зберігається в Firebase
+        let books = [];
+        let isListeningToDB = false;
 
-        // МАГІЯ FIREBASE: Слухаємо базу даних в реальному часі
-        onValue(booksRef, (snapshot) => {
-            const data = snapshot.val();
-            if (data) {
-                // Перетворюємо об'єкт з Firebase назад у масив і сортуємо від новіших до старіших
-                books = Object.values(data).sort((a, b) => b.timestamp - a.timestamp);
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                startListening();
             } else {
-                books = [];
+                signInWithEmailAndPassword(auth, "love@biblioteka.com", "Liebe!")
+                    .catch((error) => console.error("Помилка фонового доступу:", error));
             }
-            render(); // Щоразу, коли база оновлюється, ми перемальовуємо книги
         });
+
+        function startListening() {
+            if (isListeningToDB) return;
+            isListeningToDB = true;
+            
+            onValue(ref(db, 'books'), (snapshot) => {
+                const data = snapshot.val();
+                if (data) {
+                    books = Object.values(data).sort((a, b) => b.timestamp - a.timestamp);
+                } else {
+                    books = [];
+                }
+                
+                document.getElementById('global-loader').style.display = 'none';
+                document.getElementById('book-grid').style.display = 'flex';
+                render();
+            });
+        }
 
         window.setOwner = function(owner) {
             currentOwner = owner;
@@ -409,7 +319,7 @@
                     let link = data.items[0].volumeInfo.imageLinks.thumbnail || data.items[0].volumeInfo.imageLinks.smallThumbnail;
                     if (link) return link.replace('http:', 'https:').replace('&zoom=1', ''); 
                 }
-            } catch (e) { console.log("Помилка"); }
+            } catch (e) { console.log("Помилка обкладинки"); }
             return 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=2787&auto=format&fit=crop'; 
         }
 
@@ -430,19 +340,11 @@
             const newId = Date.now().toString();
 
             const newBook = {
-                id: newId, 
-                title: title, 
-                author: author || "Невідомий автор",
-                owner: currentOwner, 
-                list: currentList, 
-                status: 'unread', 
-                page: 0, 
-                cover: coverUrl, 
-                note: '',
-                timestamp: Date.now() // Додаємо час для правильного сортування
+                id: newId, title: title, author: author || "Невідомий автор",
+                owner: currentOwner, list: currentList, status: 'unread', page: 0, cover: coverUrl, note: '',
+                timestamp: Date.now()
             };
 
-            // ВІДПРАВЛЯЄМО В БАЗУ ДАНИХ FIREBASE
             set(ref(db, 'books/' + newId), newBook);
 
             titleInput.value = ''; authorInput.value = '';
@@ -452,7 +354,6 @@
 
         window.updateBookField = function(id, field, value) {
             let finalValue = (field === 'title' || field === 'author') ? toTitleCase(value.trim()) : value;
-            // ОНОВЛЮЄМО КОНКРЕТНЕ ПОЛЕ У FIREBASE
             update(ref(db, 'books/' + id), { [field]: finalValue });
         }
 
@@ -462,10 +363,7 @@
         }
 
         window.deleteBook = function(id) {
-            if(confirm("Прибрати цю книгу з колекції?")) {
-                // ВИДАЛЯЄМО З FIREBASE
-                remove(ref(db, 'books/' + id));
-            }
+            if(confirm("Прибрати цю книгу з колекції?")) remove(ref(db, 'books/' + id));
         }
 
         function render() {
