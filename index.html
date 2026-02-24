@@ -49,7 +49,7 @@
         [data-theme="midnight"] { 
             --font-heading: 'Plus Jakarta Sans', sans-serif; 
             --bg-main: #050505; --surface: #121212; --surface-glass: rgba(18, 18, 18, 0.85); 
-            --ink: #F0F0F0; --ink-muted: #888888; --border: #222222; --border-glass: rgba(255, 255, 255, 0.08); 
+            --ink: #F5F5F5; --ink-muted: #888888; --border: #222222; --border-glass: rgba(255, 255, 255, 0.08); 
             --accent: #3B82F6; --page-edge: #1A1A1A; --placeholder: #555555; --bg-texture: none; 
             --shadow-float: 0 24px 48px rgba(0,0,0,0.8), 0 0 20px rgba(59, 130, 246, 0.15); --shadow-card: 0 4px 12px rgba(0,0,0,0.5); 
             --status-reading-bg: #1E3A8A; --status-reading-text: #BFDBFE; --status-read-bg: #064E3B; --status-read-text: #A7F3D0; --status-unread-bg: #262626; --status-unread-text: #A3A3A3; 
@@ -57,6 +57,7 @@
 
         /* 5. МОККО */
         [data-theme="mocha"] { 
+            --font-heading: 'Lora', serif; 
             --bg-main: #231C18; --surface: #302621; --surface-glass: rgba(48, 38, 33, 0.85); 
             --ink: #E8DCCB; --ink-muted: #A39183; --border: #4A3C34; --border-glass: rgba(255, 255, 255, 0.06); 
             --accent: #D2946F; --page-edge: #3B2F28; --placeholder: #736458; 
@@ -77,6 +78,7 @@
 
         /* 7. ЛАВАНДА */
         [data-theme="lavender"] { 
+            --font-heading: 'Lora', serif; 
             --bg-main: #F4F0FB; --surface: #FFFFFF; --surface-glass: rgba(255, 255, 255, 0.85); 
             --ink: #4B3A5A; --ink-muted: #9D8BB0; --border: #E6DDF2; --border-glass: rgba(138, 100, 184, 0.1); 
             --accent: #8A64B8; --page-edge: #EFE9F6; --placeholder: #C5B9D4; 
@@ -94,27 +96,15 @@
             --shadow-float: 0 24px 48px rgba(255, 158, 187, 0.15); --shadow-card: 0 4px 16px rgba(255, 158, 187, 0.08); 
         }
 
-        /* 🦇 9. АДЕЛІНА (Ідеальна готика) 🦇 */
+        /* 🦇 9. АДЕЛІНА */
         [data-theme="adeline"] { 
             --font-heading: 'Lora', serif; 
-            --bg-main: #0a0506; /* Найтемніший відтінок маєтку */
-            --surface: #160b0d; /* Колір тіней */
-            --surface-glass: rgba(22, 11, 13, 0.85); 
-            --ink: #e3d1d4; /* Блідий попіл */
-            --ink-muted: #8c7377; 
-            --border: #3b1b22; 
-            --border-glass: rgba(138, 3, 26, 0.2); 
-            --accent: #8a031a; /* Колір крові і троянд Зейда */
-            --page-edge: #120b0c; 
-            --placeholder: #5c4348; 
-            /* Ефект атмосферного червоного світіння в темряві */
-            --bg-texture: radial-gradient(circle at 50% 0%, rgba(138, 3, 26, 0.15) 0%, transparent 70%), radial-gradient(circle at 100% 100%, rgba(138, 3, 26, 0.1) 0%, transparent 50%); 
-            --bg-size: 100% 100%;
-            --shadow-float: 0 24px 48px rgba(0,0,0,1), 0 0 40px rgba(138, 3, 26, 0.2); 
-            --shadow-card: 0 4px 20px rgba(0,0,0,0.8); 
-            --status-reading-bg: #2a0b12; --status-reading-text: #d67c8e; 
-            --status-read-bg: #0f291a; --status-read-text: #7bbd91; /* Похмуро-зелений */
-            --status-unread-bg: #211517; --status-unread-text: #b5989d; 
+            --bg-main: #0a0506; --surface: #160b0d; --surface-glass: rgba(22, 11, 13, 0.85); 
+            --ink: #e3d1d4; --ink-muted: #8c7377; --border: #3b1b22; --border-glass: rgba(138, 3, 26, 0.2); 
+            --accent: #8a031a; --page-edge: #120b0c; --placeholder: #5c4348; 
+            --bg-texture: radial-gradient(circle at 50% 0%, rgba(138, 3, 26, 0.15) 0%, transparent 70%), radial-gradient(circle at 100% 100%, rgba(138, 3, 26, 0.1) 0%, transparent 50%); --bg-size: 100% 100%;
+            --shadow-float: 0 24px 48px rgba(0,0,0,0.9), 0 0 30px rgba(138, 3, 26, 0.15); --shadow-card: 0 4px 16px rgba(0,0,0,0.8); 
+            --status-reading-bg: #2a0b12; --status-reading-text: #d67c8e; --status-read-bg: #0f291a; --status-read-text: #7bbd91; --status-unread-bg: #211517; --status-unread-text: #8c7377; 
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -129,38 +119,34 @@
         .theme-selector { display: flex; gap: 0.5rem; background: var(--surface); padding: 0.5rem 0.8rem; border-radius: 100px; box-shadow: var(--shadow-card); border: 1px solid var(--border); transition: var(--transition-theme); overflow-x: auto; scrollbar-width: none; }
         .theme-selector::-webkit-scrollbar { display: none; }
         .theme-btn { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: var(--transition); box-shadow: 0 2px 4px rgba(0,0,0,0.2);}
-        
-        /* 🔥 ОЧЕВИДНИЙ ІНДИКАТОР ОБРАНОЇ ТЕМИ (Подвійне кільце) 🔥 */
         .theme-btn.active { transform: scale(1.1); box-shadow: 0 0 0 2px var(--bg-main), 0 0 0 4px var(--accent); border-color: var(--bg-main); }
         
         #theme-paper { background: #F7F4EF; } #theme-minimal { background: #000000; } 
         #theme-sage { background: #4A6756; } #theme-midnight { background: #121212; border: 1px solid #3B82F6; } 
-        #theme-mocha { background: #302621; } #theme-velvet { background: #33141C; border: 1px solid #D4AF37; } 
+        #theme-mocha { background: #302621; } #theme-velvet { background: #36151E; border: 1px solid #D4AF37; } 
         #theme-lavender { background: #F4F0FB; border: 1px solid #8A64B8; } #theme-cotton-candy { background: linear-gradient(135deg, #FF9EBB 50%, #38BDF8 50%); border: 1px solid #FBCFE8; }
         #theme-adeline { background: #8a031a; border: 1px solid #000; }
 
-        /* ПЛАВАЮЧА НАВІГАЦІЯ */
-        .glass-nav-container { position: sticky; top: 1.5rem; z-index: 50; display: flex; justify-content: center; margin-bottom: 2.5rem; pointer-events: none; }
-        .glass-nav { pointer-events: auto; background: var(--surface-glass); backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px); border: 1px solid var(--border-glass); border-radius: 100px; padding: 0.4rem; display: flex; align-items: center; gap: 0.5rem; box-shadow: var(--shadow-nav); transition: var(--transition-theme); }
+        /* --- СТАТИЧНА НАВІГАЦІЯ (Горизонтальна всюди) --- */
+        .nav-wrapper { display: flex; justify-content: center; margin-bottom: 2.5rem; width: 100%; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-bottom: 4px; }
+        .nav-wrapper::-webkit-scrollbar { display: none; }
+        .main-nav { background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 0.4rem; display: flex; align-items: center; gap: 0.5rem; box-shadow: var(--shadow-card); transition: var(--transition-theme); width: max-content; margin: 0 auto; }
         
-        .nav-group { display: flex; background: var(--surface); border-radius: 100px; padding: 3px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.03); border: 1px solid var(--border-glass); transition: var(--transition-theme); }
+        .nav-group { display: flex; background: var(--bg-main); border-radius: 100px; padding: 3px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.03); border: 1px solid var(--border-glass); transition: var(--transition-theme); }
         [data-theme="midnight"] .nav-group, [data-theme="mocha"] .nav-group, [data-theme="velvet"] .nav-group, [data-theme="adeline"] .nav-group { background: rgba(0,0,0,0.3); }
-        [data-theme="minimal"] .nav-group { border-radius: 0; } [data-theme="minimal"] .glass-nav { border-radius: 0; }
+        [data-theme="minimal"] .nav-group { border-radius: 0; } [data-theme="minimal"] .main-nav { border-radius: 0; }
         
         .nav-btn { padding: 0.6rem 1.2rem; background: transparent; border: none; border-radius: 100px; color: var(--ink-muted); font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: var(--transition); display: flex; align-items: center; gap: 6px; font-family: inherit; }
         [data-theme="minimal"] .nav-btn { border-radius: 0; }
-        
-        /* 🔥 МАКСИМАЛЬНО КОНТРАСТНИЙ АКТИВНИЙ СТАН 🔥 */
         .nav-btn.active { background: var(--accent); color: var(--bg-main); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
         [data-theme="paper"] .nav-btn.active, [data-theme="sage"] .nav-btn.active, [data-theme="lavender"] .nav-btn.active, [data-theme="cotton-candy"] .nav-btn.active { color: #FFFFFF; }
         [data-theme="minimal"] .nav-btn.active { background: #000; color: #FFF; }
-        
         .nav-btn svg { width: 14px; height: 14px; }
         
         .nav-divider { width: 1px; height: 24px; background: var(--border); margin: 0 0.2rem; opacity: 0.5; }
-        .fab-add { background: var(--accent); color: var(--bg-main); border: none; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-left: 0.5rem; }
-        [data-theme="paper"] .fab-add, [data-theme="sage"] .fab-add, [data-theme="lavender"] .fab-add, [data-theme="cotton-candy"] .fab-add { color: #FFFFFF; }
+        .fab-add { background: var(--accent); color: var(--bg-main); border: none; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-left: 0.5rem; flex-shrink: 0;}
         [data-theme="minimal"] .fab-add { border-radius: 0; background: #000; color: #FFF; }
+        [data-theme="paper"] .fab-add, [data-theme="sage"] .fab-add, [data-theme="lavender"] .fab-add, [data-theme="cotton-candy"] .fab-add { color: #FFFFFF; }
         .fab-add:hover { transform: scale(1.05) rotate(90deg); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
 
         /* ІНСТРУМЕНТИ */
@@ -185,7 +171,7 @@
         .sort-select:hover { color: var(--ink); }
         .sort-box::after { content: "▼"; position: absolute; right: 14px; font-size: 0.6rem; color: var(--ink-muted); pointer-events: none; }
 
-        /* --- ВІЗУАЛЬНЕ ГРУПУВАННЯ (ЗАГОЛОВКИ) --- */
+        /* ГРУПУВАННЯ */
         .group-header { width: 100%; padding: 1.5rem 0 0.5rem; font-family: var(--font-heading); font-size: 1.8rem; font-weight: 600; color: var(--ink); border-bottom: 1px solid var(--border); margin-bottom: -1rem; display: flex; align-items: center; gap: 0.8rem; animation: slideUp 0.4s ease forwards; }
         .group-header i { color: var(--accent); opacity: 0.8; }
 
@@ -208,11 +194,6 @@
         .cover-wrapper:hover .edit-cover-btn { opacity: 1; }
         .edit-cover-btn:hover { background: var(--accent); color: var(--bg-main); transform: scale(1.15); }
         
-        .btn-delete { position: absolute; top: 1.2rem; right: 1.2rem; background: var(--bg-main); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); border-radius: 50%; color: var(--ink-muted); cursor: pointer; transition: var(--transition); opacity: 0; transform: scale(0.9); z-index: 10; box-shadow: var(--shadow-card); }
-        [data-theme="minimal"] .btn-delete { border-radius: 0; }
-        .card:hover .btn-delete { opacity: 1; transform: scale(1); }
-        .btn-delete:hover { background: #FEE2E2; color: #E03131; border-color: #FCA5A5; transform: scale(1.1) !important; }
-
         .card-content { display: flex; flex-direction: column; flex: 1; min-width: 0; justify-content: space-between; padding: 0.5rem 0; position: relative; }
         
         .list-badge { display: inline-flex; align-items: center; gap: 4px; width: fit-content; margin-bottom: 0.5rem; padding: 0.3rem 0.8rem; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 100px; background: var(--page-edge); color: var(--ink-muted); border: 1px solid var(--border); }
@@ -236,7 +217,10 @@
         .note-input { width: 100%; padding: 0; font-size: 0.9rem; border: none; background: transparent; color: var(--ink); resize: vertical; min-height: 30px; font-family: inherit; line-height: 1.5; outline: none; }
         .note-input::placeholder { color: var(--placeholder); font-style: italic; }
 
-        .card-footer { margin-top: 1.5rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; padding-top: 1.2rem; border-top: 1px dashed var(--border); }
+        /* 🔥 ФУТЕР ІЗ КНОПКОЮ ВИДАЛЕННЯ 🔥 */
+        .card-footer { margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end; padding-top: 1.2rem; border-top: 1px dashed var(--border); gap: 1rem; }
+        .footer-left-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; flex: 1; }
+        
         .status-wrapper { position: relative; }
         .status-select { padding: 0.5rem 1.2rem 0.5rem 2.4rem; border: none; border-radius: 100px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; outline: none; transition: var(--transition-theme); font-family: inherit; appearance: none; }
         [data-theme="minimal"] .status-select { border-radius: 0; border: 2px solid #000; }
@@ -249,7 +233,20 @@
         .page-input { width: 45px; font-size: 0.9rem; text-align: center; border: none; background: transparent; font-weight: 700; color: var(--ink); outline: none; border-bottom: 2px dotted var(--border); transition: var(--transition); }
         .page-input:focus { border-bottom-color: var(--accent); }
 
-        /* MODAL (Вікно додавання) */
+        .btn-delete { background: transparent; color: var(--ink-muted); border: 1px solid transparent; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); flex-shrink: 0; }
+        .btn-delete:hover { background: #FEE2E2; color: #E03131; border-color: #FCA5A5; transform: scale(1.1); box-shadow: var(--shadow-card); }
+        [data-theme="minimal"] .btn-delete { border-radius: 0; }
+        
+        .wishlist-footer-text { font-size: 0.75rem; color: var(--ink-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 6px; padding: 0.4rem 0; }
+
+        /* СКРОЛ ВГОРУ */
+        .scroll-to-top { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--surface-glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--border-glass); color: var(--ink); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: var(--shadow-nav); opacity: 0; visibility: hidden; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); z-index: 90; }
+        [data-theme="minimal"] .scroll-to-top { border-radius: 0; border: 2px solid #000; }
+        .scroll-to-top.visible { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .scroll-to-top:hover { transform: translateX(-50%) translateY(-4px); background: var(--accent); color: var(--bg-main); }
+        [data-theme="paper"] .scroll-to-top:hover, [data-theme="sage"] .scroll-to-top:hover, [data-theme="lavender"] .scroll-to-top:hover, [data-theme="cotton-candy"] .scroll-to-top:hover { color: #FFFFFF; }
+
+        /* MODAL */
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 1000; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; padding: 1rem; }
         .modal-overlay.active { display: flex; opacity: 1; }
         .modal-content { background: var(--surface); width: 100%; max-width: 420px; border-radius: var(--radius-card); padding: 2.5rem; box-shadow: var(--shadow-float); border: 1px solid var(--border); transform: scale(0.9) translateY(30px); transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
@@ -271,7 +268,7 @@
         [data-theme="paper"] .btn-submit, [data-theme="sage"] .btn-submit, [data-theme="lavender"] .btn-submit, [data-theme="cotton-candy"] .btn-submit { color: #FFFFFF; }
         .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); filter: brightness(1.1); }
 
-        /* 🔥 СУПЕР LIGHTBOX (ІДЕАЛЬНИЙ ZOOM) 🔥 */
+        /* LIGHTBOX */
         .lightbox-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.9); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; padding: 2rem; }
         .lightbox-overlay.active { opacity: 1; pointer-events: auto; }
         .lightbox-img { max-width: 95vw; max-height: 90vh; width: auto; height: auto; border-radius: 8px; box-shadow: 0 30px 80px rgba(0,0,0,0.8); transform: scale(0.95); transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); object-fit: contain; }
@@ -283,20 +280,21 @@
         .empty-state h3 { font-family: var(--font-heading); font-size: 1.5rem; color: var(--ink); margin: 1rem 0 0.5rem; }
         #global-loader { display: flex; align-items: center; justify-content: center; padding: 4rem; color: var(--ink-muted); }
 
-        /* 🔥 ІДЕАЛЬНА МОБІЛЬНА АДАПТАЦІЯ 🔥 */
+        /* 🔥 ІДЕАЛЬНА МОБІЛЬНА АДАПТАЦІЯ (БЕЗ ЖАХЛИВОЇ КНОПКИ) 🔥 */
         @media (max-width: 700px) {
-            body { padding: 1rem 1rem calc(6rem + env(safe-area-inset-bottom)); } /* Safe area для iPhone */
+            body { padding: 1rem 1rem 2rem; } 
             header { flex-direction: column; align-items: center; text-align: center; margin-bottom: 1.5rem; }
             h1 { font-size: 2.4rem; }
             .header-right { width: 100%; justify-content: center; align-items: center; }
             .theme-selector { justify-content: flex-start; max-width: 100%; padding: 0.5rem; }
             
-            .glass-nav-container { position: fixed; bottom: calc(1rem + env(safe-area-inset-bottom)); top: auto; left: 0; right: 0; z-index: 100; margin: 0; padding: 0 0.8rem; }
-            .glass-nav { width: 100%; justify-content: space-between; padding: 0.3rem; box-shadow: 0 -10px 40px rgba(0,0,0,0.15); }
-            .nav-group { flex: 1; justify-content: space-between; }
-            .nav-btn { flex: 1; justify-content: center; padding: 0.6rem 0.2rem; font-size: 0.75rem; }
-            .nav-divider { display: none; }
-            .fab-add { width: 40px; height: 40px; flex-shrink: 0; margin-left: 0.3rem; }
+            /* МЕНЮ СТАТИЧНЕ ПІД ШАПКОЮ (Не плаває, ідеально горизонтальне) */
+            .nav-wrapper { margin-bottom: 1.5rem; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-bottom: 4px; display: block; white-space: nowrap; text-align: center; }
+            .main-nav { width: max-content; margin: 0 auto; display: inline-flex; }
+            .nav-btn { padding: 0.5rem 0.8rem; font-size: 0.8rem; gap: 4px; }
+            .nav-btn svg { width: 12px; height: 12px; }
+            .fab-add { width: 38px; height: 38px; margin-left: 0.2rem; }
+            .nav-divider { margin: 0 0.1rem; }
 
             .toolbar { flex-direction: column; align-items: stretch; gap: 1rem; }
             .filters { padding-bottom: 0.5rem; }
@@ -315,11 +313,15 @@
             .note-container { padding: 0.6rem 0.8rem; margin-top: 0.5rem; }
             .note-input { font-size: 0.85rem; min-height: 24px; }
             
-            .card-footer { margin-top: 0.8rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; border-top: none; padding-top: 0.5rem; }
+            /* Мобільний футер з кнопкою видалення */
+            .card-footer { margin-top: 1rem; flex-direction: row; align-items: flex-end; gap: 0.5rem; border-top: none; padding-top: 0.5rem; }
+            .footer-left-actions { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
             .status-wrapper, .page-tracker { width: 100%; }
             .status-select { width: 100%; text-align: left; font-size: 0.7rem; padding-top: 0.4rem; padding-bottom: 0.4rem; }
+            .btn-delete { width: 36px; height: 36px; background: var(--bg-main); border: 1px solid var(--border); }
+            .btn-delete svg { width: 16px; height: 16px; }
             
-            .btn-delete { top: 0.5rem; right: 0.5rem; opacity: 1; width: 30px; height: 30px; background: var(--surface); }
+            .scroll-to-top { bottom: 1.5rem; }
         }
     </style>
 </head>
@@ -345,8 +347,8 @@
         </div>
     </header>
 
-    <div class="glass-nav-container">
-        <div class="glass-nav">
+    <div class="nav-wrapper">
+        <div class="main-nav">
             <div class="nav-group">
                 <button class="nav-btn active" onclick="setOwner('sofa')" id="owner-sofa"><i data-lucide="heart"></i> Софочка</button>
                 <button class="nav-btn" onclick="setOwner('roma')" id="owner-roma"><i data-lucide="user"></i> Ромашечка</button>
@@ -365,7 +367,7 @@
     <div class="toolbar">
         <div class="search-bar">
             <i data-lucide="search" style="color: var(--ink-muted); width: 18px;"></i>
-            <input type="text" id="search-input" class="search-input" placeholder="Пошук..." oninput="handleSearch(event)">
+            <input type="text" id="search-input" class="search-input" placeholder="Шукати книгу..." oninput="handleSearch(event)">
         </div>
         
         <div id="filter-container" class="filters">
@@ -390,6 +392,10 @@
         <div id="global-loader"><i data-lucide="loader-2" class="lucide-spin" style="width: 32px; height: 32px;"></i></div>
         <div class="grid" id="book-grid" style="display: none;"></div>
     </main>
+
+    <button class="scroll-to-top" id="scrollTopBtn" onclick="scrollToTop()" title="Повернутися вгору">
+        <i data-lucide="chevron-up"></i>
+    </button>
 
     <div id="add-modal" class="modal-overlay" onclick="if(event.target===this) closeModal()">
         <div class="modal-content">
@@ -453,7 +459,7 @@
 
         onAuthStateChanged(auth, (user) => {
             if (user) startListening();
-            else signInWithEmailAndPassword(auth, "love@biblioteka.com", "Liebe!").catch(e => alert("Помилка доступу до бази. Перевірте налаштування Firebase."));
+            else signInWithEmailAndPassword(auth, "love@biblioteka.com", "Liebe!").catch(e => alert("Помилка доступу до бази."));
         });
 
         function startListening() {
@@ -467,6 +473,16 @@
                 render();
             });
         }
+
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('scrollTopBtn');
+            if (window.scrollY > 300) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+        window.scrollToTop = function() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
         window.openModal = function() { document.getElementById('add-modal').classList.add('active'); setTimeout(() => document.getElementById('new-title').focus(), 100); }
         window.closeModal = function() { document.getElementById('add-modal').classList.remove('active'); }
@@ -599,18 +615,17 @@
                 const isLib = book.list === 'library';
                 let statusIcon = book.status === 'reading' ? 'book-open' : (book.status === 'read' ? 'check-circle-2' : 'circle');
                 
-                const footerHtml = isLib ? `
-                    <div class="card-footer">
-                        <div class="status-wrapper">
-                            <i data-lucide="${statusIcon}" class="status-icon"></i>
-                            <select class="status-select ${book.status}" onchange="updateBookField('${book.id}', 'status', this.value)">
-                                <option value="unread" ${book.status==='unread'?'selected':''}>Новенька</option>
-                                <option value="reading" ${book.status==='reading'?'selected':''}>Читаю</option>
-                                <option value="read" ${book.status==='read'?'selected':''}>Прочитана</option>
-                            </select>
-                        </div>
-                        ${book.status === 'reading' ? `<div class="page-tracker"><i data-lucide="bookmark" style="width:14px"></i><input type="number" class="page-input" value="${book.page||0}" onchange="updateBookField('${book.id}', 'page', this.value)" min="0"></div>` : ''}
-                    </div>` : '';
+                const libraryActions = isLib ? `
+                    <div class="status-wrapper">
+                        <i data-lucide="${statusIcon}" class="status-icon"></i>
+                        <select class="status-select ${book.status}" onchange="updateBookField('${book.id}', 'status', this.value)">
+                            <option value="unread" ${book.status==='unread'?'selected':''}>Новенька</option>
+                            <option value="reading" ${book.status==='reading'?'selected':''}>Читаю</option>
+                            <option value="read" ${book.status==='read'?'selected':''}>Прочитана</option>
+                        </select>
+                    </div>
+                    ${book.status === 'reading' ? `<div class="page-tracker"><i data-lucide="bookmark" style="width:14px"></i><input type="number" class="page-input" value="${book.page||0}" onchange="updateBookField('${book.id}', 'page', this.value)" min="0"></div>` : ''}
+                ` : `<div class="wishlist-footer-text"><i data-lucide="sparkles" style="width:14px;"></i> У списку бажаного</div>`;
 
                 const badgeHtml = searchQuery ? `<div class="list-badge"><i data-lucide="${isLib?'book-open':'sparkles'}" style="width:10px;"></i> ${isLib?'Полиця':'Бажане'}</div>` : '';
                 const imgHtml = book.cover ? `<img src="${book.cover}" class="cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="cover-placeholder" style="display:none;"><i data-lucide="image-off"></i>Без фото</div>` : `<div class="cover-placeholder"><i data-lucide="book" style="margin-bottom:8px;width:24px;opacity:0.5;"></i>${book.title}</div>`;
@@ -627,7 +642,6 @@
                     
                     <div class="card-content">
                         ${badgeHtml}
-                        <button class="btn-delete" onclick="deleteBook('${book.id}')" title="Видалити"><i data-lucide="trash-2" style="width:16px;"></i></button>
                         <div>
                             <input class="editable-input book-title-input" value="${book.title}" onchange="updateBookField('${book.id}', 'title', this.value)">
                             <div class="author-pub-row">
@@ -639,7 +653,13 @@
                             <div class="note-header"><i data-lucide="pen-line" style="width:12px;"></i> Нотатки</div>
                             <textarea class="note-input" placeholder="Додайте враження або цитати..." onchange="updateBookField('${book.id}', 'note', this.value)">${book.note || ''}</textarea>
                         </div>
-                        ${footerHtml}
+                        
+                        <div class="card-footer">
+                            <div class="footer-left-actions">
+                                ${libraryActions}
+                            </div>
+                            <button class="btn-delete" onclick="deleteBook('${book.id}')" title="Видалити книгу"><i data-lucide="trash-2" style="width:16px;"></i></button>
+                        </div>
                     </div>`;
                 grid.appendChild(card);
             });
