@@ -29,30 +29,13 @@
         [data-theme="mocha"] { --font-heading: 'Lora', serif; --bg-main: #1C1917; --surface: #292524; --ink: #F5F5F4; --ink-muted: #A8A29E; --border: #44403C; --accent: #D7CCC8; --page-edge: #352F2D; --placeholder: #78716C; --shadow-float: 0 14px 35px rgba(0,0,0,0.4), 0 4px 10px rgba(0,0,0,0.2); --shadow-card: 0 4px 15px rgba(0,0,0,0.2); --bg-texture: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 0); --status-reading-bg: #3B2A1A; --status-reading-text: #FDBA74; --status-read-bg: #273A2B; --status-read-text: #86EFAC; --status-unread-bg: #44403C; --status-unread-text: #D6D3D1; }
         [data-theme="velvet"] { --font-heading: 'Lora', serif; --bg-main: #1A1315; --surface: #261B1E; --ink: #F8ECEE; --ink-muted: #B3929A; --border: #3D292F; --accent: #D4849A; --page-edge: #312125; --placeholder: #8A6A72; --shadow-float: 0 14px 35px rgba(0,0,0,0.5), 0 4px 10px rgba(0,0,0,0.3); --shadow-card: 0 4px 15px rgba(0,0,0,0.3); --bg-texture: radial-gradient(rgba(212,132,154,0.03) 1px, transparent 0); --status-reading-bg: #3A2027; --status-reading-text: #ECA8B9; --status-read-bg: #242B27; --status-read-text: #8DB59C; --status-unread-bg: #322327; --status-unread-text: #B3929A; }
         [data-theme="lavender"] { --font-heading: 'Lora', serif; --bg-main: #F4F0FB; --surface: #FFFFFF; --ink: #4B3A5A; --ink-muted: #9D8BB0; --border: #E6DDF2; --accent: #8A64B8; --page-edge: #EFE9F6; --placeholder: #C5B9D4; --bg-texture: radial-gradient(rgba(138,100,184,0.03) 1px, transparent 0); --status-reading-bg: #EDE6F5; --status-reading-text: #6A4B91; --status-read-bg: #E6F0E9; --status-read-text: #456B52; --status-unread-bg: #F0EDF5; --status-unread-text: #9D8BB0; }
-        
-        /* 🔥 ПОВНІСТЮ НОВА ЦУКРОВА ВАТА 🔥 */
         [data-theme="cotton-candy"] { 
-            --font-heading: 'Lora', serif; 
-            --bg-main: #FCF9FA; 
-            --surface: #FFFFFF; 
-            --ink: #4A3F45; /* Теплий темний відтінок замість різкого синього */
-            --ink-muted: #A0949B; 
-            --border: #F7E9F0; 
-            --accent: #FF9EBB; /* Ніжний полунично-рожевий */
-            --page-edge: #F4F8FA; 
-            --placeholder: #D3C9D0; 
-            
-            /* Ефект двох пастельних хмаринок по кутах екрану */
-            --bg-texture: radial-gradient(circle at 0% 0%, #FFE5F1 0%, transparent 50%), radial-gradient(circle at 100% 100%, #E3F4FE 0%, transparent 50%);
-            --bg-size: 100% 100%;
-            
-            --status-reading-bg: #E3F4FE; --status-reading-text: #428BCA; 
-            --status-read-bg: #FFE5F1; --status-read-text: #C45B8C; 
-            --status-unread-bg: #F4F3F5; --status-unread-text: #A0949B;
-            
-            /* Тіні мають легкий рожевий і блакитний відблиск */
-            --shadow-float: 0 20px 40px rgba(255, 158, 187, 0.15), 0 4px 12px rgba(137, 207, 240, 0.1);
-            --shadow-card: 0 4px 15px rgba(255, 158, 187, 0.08);
+            --font-heading: 'Lora', serif; --bg-main: #FCF9FA; --surface: #FFFFFF; 
+            --ink: #4A3F45; --ink-muted: #A0949B; --border: #F7E9F0; --accent: #FF9EBB; 
+            --page-edge: #F4F8FA; --placeholder: #D3C9D0; 
+            --bg-texture: radial-gradient(circle at 0% 0%, #FFE5F1 0%, transparent 50%), radial-gradient(circle at 100% 100%, #E3F4FE 0%, transparent 50%); --bg-size: 100% 100%;
+            --status-reading-bg: #E3F4FE; --status-reading-text: #428BCA; --status-read-bg: #FFE5F1; --status-read-text: #C45B8C; --status-unread-bg: #F4F3F5; --status-unread-text: #A0949B;
+            --shadow-float: 0 20px 40px rgba(255, 158, 187, 0.15), 0 4px 12px rgba(137, 207, 240, 0.1); --shadow-card: 0 4px 15px rgba(255, 158, 187, 0.08);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -60,14 +43,12 @@
         body {
             font-family: var(--font-body); background-color: var(--bg-main); color: var(--ink);
             line-height: 1.6; padding: 3rem 1.5rem; max-width: 900px; margin: 0 auto;
-            -webkit-font-smoothing: antialiased; 
-            background-image: var(--bg-texture); 
-            background-size: var(--bg-size);
-            background-attachment: fixed;
-            transition: var(--transition-theme);
+            -webkit-font-smoothing: antialiased; background-image: var(--bg-texture); 
+            background-size: var(--bg-size); background-attachment: fixed;
+            transition: var(--transition-theme); min-height: 100vh;
         }
 
-        header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1.5rem; }
+        header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1.5rem; }
         .header-left { display: flex; flex-direction: column; gap: 0.5rem; }
         h1 { font-family: var(--font-heading); font-size: 2.8rem; font-weight: 500; letter-spacing: -0.02em; margin: 0; transition: var(--transition-theme); }
         .stats { font-size: 0.9rem; color: var(--ink-muted); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
@@ -77,22 +58,27 @@
         .theme-selector {
             display: flex; gap: 0.4rem; background: var(--surface); padding: 0.5rem; flex-wrap: wrap; justify-content: flex-end;
             border-radius: 100px; box-shadow: var(--shadow-card); border: 1px solid var(--border); transition: var(--transition-theme);
-            max-width: 280px;
         }
         .theme-btn { width: 22px; height: 22px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: var(--transition); }
         .theme-btn:hover { transform: scale(1.2); }
         .theme-btn.active { border-color: var(--accent); transform: scale(1.2); box-shadow: 0 0 0 2px var(--bg-main); }
 
-        #theme-paper { background: #F3F3F1; border: 1px solid #E5E5E0; } 
-        #theme-minimal { background: #FFFFFF; border: 1px solid #DEE2E6; }
-        #theme-sage { background: #E1EBE5; border: 1px solid #4A6756; } 
-        #theme-midnight { background: #121212; border: 1px solid #343A40; }
-        #theme-mocha { background: #292524; border: 1px solid #44403C; } 
-        #theme-velvet { background: #261B1E; border: 1px solid #D4849A; }
-        #theme-lavender { background: #F4F0FB; border: 1px solid #8A64B8; } 
-        #theme-cotton-candy { background: linear-gradient(135deg, #FFE5F1 50%, #E3F4FE 50%); border: 1px solid #FBCFE8; }
+        #theme-paper { background: #F3F3F1; border: 1px solid #E5E5E0; } #theme-minimal { background: #FFFFFF; border: 1px solid #DEE2E6; }
+        #theme-sage { background: #E1EBE5; border: 1px solid #4A6756; } #theme-midnight { background: #121212; border: 1px solid #343A40; }
+        #theme-mocha { background: #292524; border: 1px solid #44403C; } #theme-velvet { background: #261B1E; border: 1px solid #D4849A; }
+        #theme-lavender { background: #F4F0FB; border: 1px solid #8A64B8; } #theme-cotton-candy { background: linear-gradient(135deg, #FFE5F1 50%, #E3F4FE 50%); border: 1px solid #FBCFE8; }
 
-        .control-panel { background: var(--surface); padding: 2rem; border-radius: var(--radius-card); box-shadow: var(--shadow-card); margin-bottom: 4rem; border: 1px solid var(--border); transition: var(--transition-theme); }
+        /* ПОШУК ТА ПАНЕЛЬ КЕРУВАННЯ */
+        .control-panel { background: var(--surface); padding: 2rem; border-radius: var(--radius-card); box-shadow: var(--shadow-card); margin-bottom: 3rem; border: 1px solid var(--border); transition: var(--transition-theme); }
+        
+        .search-bar-container {
+            display: flex; align-items: center; background: var(--bg-main); border: 1px solid var(--border);
+            border-radius: 16px; padding: 0.8rem 1.2rem; margin-bottom: 2rem; transition: var(--transition);
+        }
+        .search-bar-container:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,0,0,0.03); background: var(--surface); }
+        .search-input { width: 100%; border: none; background: transparent; color: var(--ink); font-size: 1rem; font-family: inherit; outline: none; margin-left: 0.8rem; }
+        .search-input::placeholder { color: var(--placeholder); }
+        
         .nav-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
         .segmented-control { display: inline-flex; background: var(--bg-main); padding: 4px; border-radius: 14px; transition: var(--transition-theme); }
         .seg-btn { padding: 8px 20px; background: transparent; border: none; border-radius: 10px; color: var(--ink-muted); cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: var(--transition); display: flex; align-items: center; gap: 8px; font-family: inherit; }
@@ -107,57 +93,76 @@
         .btn-add { background: var(--accent); color: var(--surface); border: none; padding: 0 2rem; border-radius: 100px; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; transition: var(--transition); height: 48px; font-weight: 600; font-family: inherit; }
         .btn-add:hover { transform: translateY(-2px); filter: brightness(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
 
-        .grid { display: flex; flex-direction: column; gap: 2rem; padding-bottom: 4rem; }
-        .card { background: var(--surface); border-radius: var(--radius-card); display: flex; flex-direction: row; padding: 2rem; transition: var(--transition-theme), transform 0.4s ease; animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; box-shadow: var(--shadow-card); border: 1px solid var(--border); }
+        /* КАРТКИ КНИГ */
+        .grid { display: flex; flex-direction: column; gap: 2.5rem; padding-bottom: 4rem; }
+        .card { background: var(--surface); border-radius: var(--radius-card); display: flex; flex-direction: row; padding: 2rem; transition: var(--transition-theme), transform 0.4s ease, box-shadow 0.4s ease; animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; box-shadow: var(--shadow-card); border: 1px solid var(--border); }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-float); }
 
-        .cover-container { position: relative; width: 150px; flex-shrink: 0; margin-right: 2.5rem; perspective: 1000px; }
-        .cover-wrapper { position: relative; width: 100%; padding-bottom: 150%; border-radius: 2px 8px 8px 2px; box-shadow: -4px 0 10px rgba(0,0,0,0.1), 8px 10px 25px rgba(0,0,0,0.2); transition: transform 0.5s ease; transform-style: preserve-3d; background: var(--bg-main); }
+        .cover-container { position: relative; width: 160px; flex-shrink: 0; margin-right: 2.5rem; perspective: 1000px; }
+        .cover-wrapper { position: relative; width: 100%; padding-bottom: 150%; border-radius: 4px 10px 10px 4px; box-shadow: -4px 0 10px rgba(0,0,0,0.08), 8px 10px 25px rgba(0,0,0,0.15); transition: transform 0.5s ease; transform-style: preserve-3d; background: var(--bg-main); }
         .card:hover .cover-wrapper { transform: scale(1.02) rotateY(-5deg); }
-        .cover { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 2px 8px 8px 2px; z-index: 2; }
-        .cover-spine { position: absolute; left: 0; top: 0; bottom: 0; width: 12px; z-index: 3; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 20%, rgba(255,255,255,0) 100%); border-radius: 2px 0 0 2px; }
-        .cover-pages { position: absolute; right: -5px; top: 3px; bottom: 3px; width: 5px; z-index: 1; background: var(--page-edge); border-radius: 0 4px 4px 0; box-shadow: inset 1px 0 3px rgba(0,0,0,0.1); }
-        .edit-cover-btn { position: absolute; inset: 0; z-index: 4; border-radius: 2px 8px 8px 2px; background: rgba(17, 17, 17, 0.6); color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; opacity: 0; cursor: pointer; border: none; transition: var(--transition); backdrop-filter: blur(4px); font-size: 0.8rem; font-weight: 600; font-family: inherit; }
+        .cover { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 4px 10px 10px 4px; z-index: 2; }
+        
+        /* Заглушка, якщо картинки немає */
+        .cover-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--ink-muted); text-align: center; padding: 1rem; border-radius: 4px 10px 10px 4px; background: var(--page-edge); border: 1px solid var(--border); z-index: 1; font-size: 0.8rem; }
+        
+        .cover-spine { position: absolute; left: 0; top: 0; bottom: 0; width: 14px; z-index: 3; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.25) 20%, rgba(255,255,255,0) 100%); border-radius: 4px 0 0 4px; }
+        .cover-pages { position: absolute; right: -6px; top: 4px; bottom: 4px; width: 6px; z-index: 1; background: var(--page-edge); border-radius: 0 4px 4px 0; box-shadow: inset 1px 0 3px rgba(0,0,0,0.1); }
+        .edit-cover-btn { position: absolute; inset: 0; z-index: 4; border-radius: 4px 10px 10px 4px; background: rgba(17, 17, 17, 0.6); color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; opacity: 0; cursor: pointer; border: none; transition: var(--transition); backdrop-filter: blur(4px); font-size: 0.8rem; font-weight: 600; font-family: inherit; }
         .cover-wrapper:hover .edit-cover-btn { opacity: 1; }
 
         .card-content { display: flex; flex-direction: column; flex: 1; position: relative; justify-content: center; }
+        
+        /* ОНОВЛЕНИЙ Значок (де лежить книга при глобальному пошуку). Тепер він стабільно лежить над назвою! */
+        .list-badge { 
+            display: inline-flex; align-items: center; gap: 4px; width: fit-content; 
+            margin-bottom: 0.75rem; padding: 0.3rem 0.8rem; 
+            font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; 
+            border-radius: 100px; background: var(--page-edge); color: var(--ink-muted); border: 1px solid var(--border); 
+        }
+
         .editable-input { width: 100%; background: transparent; border: 1px solid transparent; outline: none; padding: 0; margin: 0; transition: var(--transition-theme); border-radius: 8px; color: var(--ink); }
         .editable-input:focus { background: var(--bg-main); padding: 0.25rem 0.5rem; margin: -0.25rem -0.5rem; border-color: var(--border); }
-        .book-title-input { font-family: var(--font-heading); font-weight: 600; font-size: 2rem; line-height: 1.15; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
-        .book-author-input { color: var(--ink-muted); font-size: 1.1rem; font-weight: 500; font-family: var(--font-body); }
+        .book-title-input { font-family: var(--font-heading); font-weight: 600; font-size: 2.2rem; line-height: 1.15; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+        .book-author-input { color: var(--ink-muted); font-size: 1.15rem; font-weight: 500; font-family: var(--font-body); }
 
-        .note-container { margin-top: 1.5rem; flex: 1; }
-        .note-input { width: 100%; padding: 0; font-size: 0.95rem; border: none; background: transparent; color: var(--ink); resize: vertical; min-height: 40px; transition: var(--transition-theme); font-family: inherit; line-height: 1.7; }
-        .note-input:hover { background: var(--bg-main); border-radius: 8px; padding: 0.5rem; margin: -0.5rem; }
-        .note-input:focus { outline: none; background: var(--bg-main); padding: 0.75rem; margin: -0.75rem; border-radius: 12px; box-shadow: inset 0 0 0 1px var(--border); }
+        /* ОНОВЛЕНИЙ БЛОК НОТАТОК (стабільний, гарний) */
+        .note-container { 
+            margin-top: 1.5rem; flex: 1; background: var(--page-edge); border: 1px solid var(--border); 
+            border-radius: 16px; padding: 1rem 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;
+            transition: var(--transition-theme);
+        }
+        .note-header { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: var(--ink-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+        .note-input { width: 100%; padding: 0; font-size: 0.95rem; border: none; background: transparent; color: var(--ink); resize: vertical; min-height: 40px; transition: var(--transition-theme); font-family: inherit; line-height: 1.6; outline: none; }
         .note-input::placeholder { color: var(--placeholder); font-style: italic; }
 
         .card-footer { margin-top: 2rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
         .status-wrapper { position: relative; }
-        .status-select { padding: 0.5rem 1rem 0.5rem 2.2rem; border: none; border-radius: 100px; font-size: 0.85rem; font-weight: 600; cursor: pointer; outline: none; transition: var(--transition-theme); font-family: inherit; appearance: none; }
-        .status-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); pointer-events: none; width: 14px; color: currentColor; }
+        .status-select { padding: 0.6rem 1.2rem 0.6rem 2.4rem; border: none; border-radius: 100px; font-size: 0.85rem; font-weight: 700; cursor: pointer; outline: none; transition: var(--transition-theme); font-family: inherit; appearance: none; }
+        .status-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); pointer-events: none; width: 16px; color: currentColor; }
         .status-select.unread { background: var(--status-unread-bg); color: var(--status-unread-text); }
         .status-select.reading { background: var(--status-reading-bg); color: var(--status-reading-text); }
         .status-select.read { background: var(--status-read-bg); color: var(--status-read-text); }
-        .page-tracker { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--ink-muted); font-weight: 600; background: var(--bg-main); padding: 0.35rem 0.75rem; border-radius: 100px; transition: var(--transition-theme); }
-        .page-input { width: 50px; font-size: 0.9rem; text-align: center; border: none; background: transparent; font-weight: 700; color: var(--ink); outline: none; border-bottom: 1px dashed var(--ink-muted); transition: var(--transition-theme); }
+        .page-tracker { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--ink-muted); font-weight: 600; background: var(--page-edge); padding: 0.5rem 1rem; border-radius: 100px; transition: var(--transition-theme); border: 1px solid var(--border); }
+        .page-input { width: 50px; font-size: 0.95rem; text-align: center; border: none; background: transparent; font-weight: 700; color: var(--ink); outline: none; border-bottom: 1px dashed var(--ink-muted); transition: var(--transition-theme); }
 
-        .btn-delete { position: absolute; top: -0.5rem; right: -0.5rem; background: var(--surface); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); border-radius: 50%; color: var(--ink-muted); cursor: pointer; transition: var(--transition); opacity: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .btn-delete { position: absolute; top: -0.5rem; right: -0.5rem; background: var(--surface); width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); border-radius: 50%; color: var(--ink-muted); cursor: pointer; transition: var(--transition); opacity: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         .card:hover .btn-delete { opacity: 1; }
         .btn-delete:hover { color: #E03131; border-color: #E03131; transform: scale(1.1); background: #FFF5F5; }
 
         .empty-state { text-align: center; padding: 6rem 2rem; color: var(--ink-muted); transition: var(--transition-theme); }
-        .empty-state h3 { font-family: var(--font-heading); font-size: 1.5rem; color: var(--ink); margin: 1rem 0 0.5rem; }
+        .empty-state h3 { font-family: var(--font-heading); font-size: 1.8rem; color: var(--ink); margin: 1.5rem 0 0.5rem; }
 
         #global-loader { display: flex; align-items: center; justify-content: center; padding: 4rem; color: var(--ink-muted); }
 
         @media (max-width: 700px) {
-            .card { flex-direction: column; padding: 1.5rem; } .cover-container { width: 180px; margin: 0 auto 2rem; }
-            .book-title-input { text-align: center; font-size: 1.6rem; } .book-author-input { text-align: center; }
-            .card-footer { justify-content: center; } .btn-delete { top: 1rem; right: 1rem; opacity: 1; }
+            .card { flex-direction: column; padding: 1.5rem; } .cover-container { width: 160px; margin: 0 auto 2rem; }
+            .book-title-input { text-align: center; font-size: 1.8rem; } .book-author-input { text-align: center; }
+            .card-footer { justify-content: center; } .btn-delete { top: -1rem; right: -1rem; opacity: 1; }
             .nav-row { justify-content: center; } header { justify-content: center; text-align: center; } .header-right { align-items: center; }
-            .theme-selector { justify-content: center; }
+            .theme-selector { justify-content: center; } 
+            .list-badge { margin: 0 auto 1rem; } /* Центруємо значок на телефоні */
         }
     </style>
 </head>
@@ -186,6 +191,12 @@
     </header>
 
     <div class="control-panel">
+        
+        <div class="search-bar-container">
+            <i data-lucide="search" style="color: var(--ink-muted); width: 20px; height: 20px;"></i>
+            <input type="text" id="search-input" class="search-input" placeholder="Пошук по всім вашим книгам (Бібліотека + Бажане)..." oninput="handleSearch(event)">
+        </div>
+
         <div class="nav-row">
             <div class="segmented-control">
                 <button class="seg-btn active" onclick="setOwner('sofa')" id="owner-sofa"><i data-lucide="user" style="width: 16px;"></i> Софочка</button>
@@ -213,7 +224,7 @@
 
     <main>
         <div id="global-loader">
-            <i data-lucide="loader-2" class="lucide-spin" style="width: 24px; height: 24px;"></i>
+            <i data-lucide="loader-2" class="lucide-spin" style="width: 32px; height: 32px;"></i>
         </div>
         <div class="grid" id="book-grid" style="display: none;"></div>
     </main>
@@ -253,8 +264,8 @@
         let currentList = 'library';
         let books = [];
         let isListeningToDB = false;
+        let searchQuery = ""; 
 
-        // --- ТИХИЙ ВХІД ТА ЗАВАНТАЖЕННЯ ДАНИХ ---
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 startListening();
@@ -275,7 +286,6 @@
                 } else {
                     books = [];
                 }
-                
                 document.getElementById('global-loader').style.display = 'none';
                 document.getElementById('book-grid').style.display = 'flex';
                 render();
@@ -293,6 +303,14 @@
             currentList = list;
             document.getElementById('list-library').classList.toggle('active', list === 'library');
             document.getElementById('list-wishlist').classList.toggle('active', list === 'wishlist');
+            
+            document.getElementById('search-input').value = "";
+            searchQuery = "";
+            render();
+        }
+
+        window.handleSearch = function(event) {
+            searchQuery = event.target.value.toLowerCase().trim();
             render();
         }
 
@@ -302,16 +320,27 @@
         }
 
         async function fetchCover(title, author) {
+            const cleanTitle = encodeURIComponent(title);
+            const cleanAuthor = encodeURIComponent(author);
+            
             try {
-                const query = encodeURIComponent(`${title} ${author}`);
-                const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=1`);
+                const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=intitle:${cleanTitle}+inauthor:${cleanAuthor}&maxResults=1`);
                 const data = await res.json();
                 if (data.items && data.items.length > 0 && data.items[0].volumeInfo.imageLinks) {
                     let link = data.items[0].volumeInfo.imageLinks.thumbnail || data.items[0].volumeInfo.imageLinks.smallThumbnail;
-                    if (link) return link.replace('http:', 'https:').replace('&zoom=1', ''); 
+                    if (link) return link.replace('http:', 'https:').replace('&zoom=1', '&zoom=0'); 
                 }
-            } catch (e) { console.log("Помилка обкладинки"); }
-            return 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=2787&auto=format&fit=crop'; 
+            } catch (e) { console.log("Google Books не знайшов, пробуємо резерв..."); }
+
+            try {
+                const olRes = await fetch(`https://openlibrary.org/search.json?title=${cleanTitle}&author=${cleanAuthor}&limit=1`);
+                const olData = await olRes.json();
+                if (olData.docs && olData.docs[0] && olData.docs[0].cover_i) {
+                    return `https://covers.openlibrary.org/b/id/${olData.docs[0].cover_i}-L.jpg`;
+                }
+            } catch (e) { console.log("Open Library не знайшов."); }
+            
+            return ''; 
         }
 
         window.addBook = async function() {
@@ -323,7 +352,7 @@
             if (!title) return;
 
             const btn = document.querySelector('.btn-add');
-            btn.innerHTML = `<i data-lucide="loader-2" class="lucide-spin" style="width: 18px;"></i>`;
+            btn.innerHTML = `<i data-lucide="loader-2" class="lucide-spin" style="width: 18px;"></i> Завантажую...`;
             lucide.createIcons();
             btn.disabled = true;
 
@@ -350,7 +379,7 @@
 
         window.changeCover = function(id) {
             const newUrl = prompt("Вставте пряме посилання (URL) на нову обкладинку:");
-            if (newUrl && newUrl.trim() !== "") window.updateBookField(id, 'cover', newUrl.trim());
+            if (newUrl !== null) window.updateBookField(id, 'cover', newUrl.trim());
         }
 
         window.deleteBook = function(id) {
@@ -360,17 +389,38 @@
         function render() {
             const grid = document.getElementById('book-grid');
             grid.innerHTML = '';
+            
             document.getElementById('total-count').innerText = books.filter(b => b.list === 'library').length;
-            const visibleBooks = books.filter(b => b.owner === currentOwner && b.list === currentList);
+            
+            let visibleBooks = books.filter(b => b.owner === currentOwner);
+
+            if (searchQuery) {
+                visibleBooks = visibleBooks.filter(b => 
+                    b.title.toLowerCase().includes(searchQuery) || 
+                    b.author.toLowerCase().includes(searchQuery)
+                );
+            } else {
+                visibleBooks = visibleBooks.filter(b => b.list === currentList);
+            }
 
             if (visibleBooks.length === 0) {
-                grid.innerHTML = `
-                    <div class="empty-state">
-                        <i data-lucide="book-open-text" style="width: 56px; height: 56px; opacity: 0.2; color: var(--ink);"></i>
-                        <h3>Ваша полиця порожня</h3>
-                        <p>Додайте сюди першу книгу, щоб розпочати колекцію.</p>
-                    </div>
-                `;
+                if (searchQuery) {
+                    grid.innerHTML = `
+                        <div class="empty-state">
+                            <i data-lucide="book-dashed" style="width: 64px; height: 64px; opacity: 0.2; color: var(--ink);"></i>
+                            <h3>Такої книги не знайдено</h3>
+                            <p>Схоже, у вас ще немає цієї книги. Додайте її до "Бажаного", щоб не забути придбати!</p>
+                        </div>
+                    `;
+                } else {
+                    grid.innerHTML = `
+                        <div class="empty-state">
+                            <i data-lucide="book-open-text" style="width: 56px; height: 56px; opacity: 0.2; color: var(--ink);"></i>
+                            <h3>Ваша полиця порожня</h3>
+                            <p>Додайте сюди першу книгу, щоб розпочати колекцію.</p>
+                        </div>
+                    `;
+                }
                 lucide.createIcons();
                 return;
             }
@@ -385,7 +435,7 @@
                             <i data-lucide="${statusIcon}" class="status-icon"></i>
                             <select class="status-select ${book.status}" onchange="updateBookField('${book.id}', 'status', this.value)">
                                 <option value="unread" ${book.status === 'unread' ? 'selected' : ''}>Не прочитана</option>
-                                <option value="reading" ${book.status === 'reading' ? 'selected' : ''}>В процесі</option>
+                                <option value="reading" ${book.status === 'reading' ? 'selected' : ''}>В процесі читання</option>
                                 <option value="read" ${book.status === 'read' ? 'selected' : ''}>Прочитана</option>
                             </select>
                         </div>
@@ -397,29 +447,41 @@
                     </div>
                 ` : '';
 
+                // ОНОВЛЕНО: Тепер цей бейдж буде жити над назвою і не зламає верстку
+                const badgeHtml = searchQuery ? `<div class="list-badge"><i data-lucide="${isLibrary ? 'library' : 'sparkles'}" style="width: 12px; height: 12px;"></i> ${isLibrary ? 'У бібліотеці' : 'У бажаному'}</div>` : '';
+
+                const coverImageHtml = book.cover 
+                    ? `<img src="${book.cover}" class="cover" alt="Обкладинка" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                       <div class="cover-placeholder" style="display: none;"><i data-lucide="image-off" style="margin-bottom: 8px;"></i>Без фото</div>`
+                    : `<div class="cover-placeholder"><i data-lucide="book" style="margin-bottom: 8px; width: 32px; height: 32px; opacity: 0.5;"></i>${book.title}</div>`;
+
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.innerHTML = `
                     <div class="cover-container">
                         <div class="cover-wrapper">
                             <div class="cover-pages"></div>
-                            <img src="${book.cover}" class="cover" alt="Обкладинка" onerror="this.src='https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=2787&auto=format&fit=crop'">
+                            ${coverImageHtml}
                             <div class="cover-spine"></div>
                             <button class="edit-cover-btn" onclick="changeCover('${book.id}')">
-                                <i data-lucide="image-plus" style="margin-bottom: 4px;"></i>Змінити
+                                <i data-lucide="image-plus" style="margin-bottom: 4px;"></i>Своє фото
                             </button>
                         </div>
                     </div>
                     
                     <div class="card-content">
-                        <button class="btn-delete" onclick="deleteBook('${book.id}')" title="Видалити"><i data-lucide="x" style="width: 18px;"></i></button>
+                        ${badgeHtml} <button class="btn-delete" onclick="deleteBook('${book.id}')" title="Видалити"><i data-lucide="trash-2" style="width: 18px;"></i></button>
+                        
                         <div>
                             <input class="editable-input book-title-input" value="${book.title}" onchange="updateBookField('${book.id}', 'title', this.value)">
                             <input class="editable-input book-author-input" value="${book.author}" onchange="updateBookField('${book.id}', 'author', this.value)">
                         </div>
+                        
                         <div class="note-container">
-                            <textarea class="note-input" placeholder="Ваші думки, цитати або побажання щодо видання..." onchange="updateBookField('${book.id}', 'note', this.value)">${book.note || ''}</textarea>
+                            <div class="note-header"><i data-lucide="pen-line" style="width: 12px; height: 12px;"></i> Особисті нотатки</div>
+                            <textarea class="note-input" placeholder="Додайте свої враження, цитати, або побажання щодо видання..." onchange="updateBookField('${book.id}', 'note', this.value)">${book.note || ''}</textarea>
                         </div>
+                        
                         ${footerHtml}
                     </div>
                 `;
