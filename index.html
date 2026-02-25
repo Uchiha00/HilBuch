@@ -116,18 +116,14 @@
         h1 { font-family: var(--font-heading); font-size: 2.8rem; font-weight: 600; letter-spacing: -0.03em; margin: 0; transition: var(--transition-theme); }
         .stats { font-size: 0.85rem; color: var(--ink-muted); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
         
-        .theme-selector { display: flex; gap: 0.5rem; background: var(--surface); padding: 0.5rem 0.8rem; border-radius: 100px; box-shadow: var(--shadow-card); border: 1px solid var(--border); transition: var(--transition-theme); overflow-x: auto; scrollbar-width: none; }
-        .theme-selector::-webkit-scrollbar { display: none; }
-        .theme-btn { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: var(--transition); box-shadow: 0 2px 4px rgba(0,0,0,0.2);}
-        .theme-btn.active { transform: scale(1.1); box-shadow: 0 0 0 2px var(--bg-main), 0 0 0 4px var(--accent); border-color: var(--bg-main); }
+        .theme-selector { display: flex; gap: 0.4rem; background: var(--surface); padding: 0.5rem; border-radius: 100px; box-shadow: var(--shadow-card); border: 1px solid var(--border); transition: var(--transition-theme); max-width: 280px; flex-wrap: wrap; justify-content: flex-end;}
+        .theme-btn { width: 22px; height: 22px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: var(--transition); box-shadow: 0 2px 4px rgba(0,0,0,0.1);}
+        .theme-btn:hover { transform: scale(1.15); }
+        .theme-btn.active { border-color: var(--accent); transform: scale(1.2); box-shadow: 0 0 0 3px var(--bg-main); }
         
-        #theme-paper { background: #F7F4EF; } #theme-minimal { background: #000000; } 
-        #theme-sage { background: #4A6756; } #theme-midnight { background: #121212; border: 1px solid #3B82F6; } 
-        #theme-mocha { background: #302621; } #theme-velvet { background: #36151E; border: 1px solid #D4AF37; } 
-        #theme-lavender { background: #F4F0FB; border: 1px solid #8A64B8; } #theme-cotton-candy { background: linear-gradient(135deg, #FF9EBB 50%, #38BDF8 50%); border: 1px solid #FBCFE8; }
-        #theme-adeline { background: #8a031a; border: 1px solid #000; }
+        #theme-paper { background: #F7F4EF; border-color: #E8E3D8; } #theme-minimal { background: #000000; border-color: #CCCCCC; } #theme-sage { background: #4A6756; border-color: #D1DACD; } #theme-midnight { background: #121212; border-color: #3B82F6; } #theme-mocha { background: #302621; border-color: #D2946F; } #theme-velvet { background: #36151E; border-color: #D4AF37; } #theme-lavender { background: #F4F0FB; border-color: #8A64B8; } #theme-cotton-candy { background: linear-gradient(135deg, #FF9EBB 50%, #38BDF8 50%); border-color: #FBCFE8; } #theme-adeline { background: #8a031a; border: 1px solid #000; }
 
-        /* --- СТАТИЧНА НАВІГАЦІЯ (Горизонтальна всюди) --- */
+        /* СТАТИЧНА НАВІГАЦІЯ */
         .nav-wrapper { display: flex; justify-content: center; margin-bottom: 2.5rem; width: 100%; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-bottom: 4px; }
         .nav-wrapper::-webkit-scrollbar { display: none; }
         .main-nav { background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 0.4rem; display: flex; align-items: center; gap: 0.5rem; box-shadow: var(--shadow-card); transition: var(--transition-theme); width: max-content; margin: 0 auto; }
@@ -217,7 +213,7 @@
         .note-input { width: 100%; padding: 0; font-size: 0.9rem; border: none; background: transparent; color: var(--ink); resize: vertical; min-height: 30px; font-family: inherit; line-height: 1.5; outline: none; }
         .note-input::placeholder { color: var(--placeholder); font-style: italic; }
 
-        /* 🔥 ФУТЕР ІЗ КНОПКОЮ ВИДАЛЕННЯ 🔥 */
+        /* ФУТЕР ІЗ КНОПКОЮ ВИДАЛЕННЯ ТА КНОПКОЮ "ПРИДБАНО" */
         .card-footer { margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end; padding-top: 1.2rem; border-top: 1px dashed var(--border); gap: 1rem; }
         .footer-left-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; flex: 1; }
         
@@ -233,12 +229,16 @@
         .page-input { width: 45px; font-size: 0.9rem; text-align: center; border: none; background: transparent; font-weight: 700; color: var(--ink); outline: none; border-bottom: 2px dotted var(--border); transition: var(--transition); }
         .page-input:focus { border-bottom-color: var(--accent); }
 
+        /* Кнопка "Придбано! На полицю" у Бажаному */
+        .btn-move-to-library { background: var(--accent); color: var(--bg-main); border: none; padding: 0.5rem 1.2rem; border-radius: 100px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; transition: var(--transition); display: inline-flex; align-items: center; gap: 6px; font-family: inherit; }
+        .btn-move-to-library:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); filter: brightness(1.1); }
+        [data-theme="minimal"] .btn-move-to-library { border-radius: 0; background: #000; color: #FFF; }
+        [data-theme="paper"] .btn-move-to-library, [data-theme="sage"] .btn-move-to-library, [data-theme="lavender"] .btn-move-to-library, [data-theme="cotton-candy"] .btn-move-to-library { color: #FFFFFF; }
+
         .btn-delete { background: transparent; color: var(--ink-muted); border: 1px solid transparent; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); flex-shrink: 0; }
         .btn-delete:hover { background: #FEE2E2; color: #E03131; border-color: #FCA5A5; transform: scale(1.1); box-shadow: var(--shadow-card); }
         [data-theme="minimal"] .btn-delete { border-radius: 0; }
         
-        .wishlist-footer-text { font-size: 0.75rem; color: var(--ink-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 6px; padding: 0.4rem 0; }
-
         /* СКРОЛ ВГОРУ */
         .scroll-to-top { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--surface-glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--border-glass); color: var(--ink); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: var(--shadow-nav); opacity: 0; visibility: hidden; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); z-index: 90; }
         [data-theme="minimal"] .scroll-to-top { border-radius: 0; border: 2px solid #000; }
@@ -280,7 +280,7 @@
         .empty-state h3 { font-family: var(--font-heading); font-size: 1.5rem; color: var(--ink); margin: 1rem 0 0.5rem; }
         #global-loader { display: flex; align-items: center; justify-content: center; padding: 4rem; color: var(--ink-muted); }
 
-        /* 🔥 ІДЕАЛЬНА МОБІЛЬНА АДАПТАЦІЯ (БЕЗ ЖАХЛИВОЇ КНОПКИ) 🔥 */
+        /* МОБІЛЬНА АДАПТАЦІЯ */
         @media (max-width: 700px) {
             body { padding: 1rem 1rem 2rem; } 
             header { flex-direction: column; align-items: center; text-align: center; margin-bottom: 1.5rem; }
@@ -288,7 +288,6 @@
             .header-right { width: 100%; justify-content: center; align-items: center; }
             .theme-selector { justify-content: flex-start; max-width: 100%; padding: 0.5rem; }
             
-            /* МЕНЮ СТАТИЧНЕ ПІД ШАПКОЮ (Не плаває, ідеально горизонтальне) */
             .nav-wrapper { margin-bottom: 1.5rem; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-bottom: 4px; display: block; white-space: nowrap; text-align: center; }
             .main-nav { width: max-content; margin: 0 auto; display: inline-flex; }
             .nav-btn { padding: 0.5rem 0.8rem; font-size: 0.8rem; gap: 4px; }
@@ -313,11 +312,12 @@
             .note-container { padding: 0.6rem 0.8rem; margin-top: 0.5rem; }
             .note-input { font-size: 0.85rem; min-height: 24px; }
             
-            /* Мобільний футер з кнопкою видалення */
             .card-footer { margin-top: 1rem; flex-direction: row; align-items: flex-end; gap: 0.5rem; border-top: none; padding-top: 0.5rem; }
-            .footer-left-actions { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+            .footer-left-actions { flex-direction: column; align-items: flex-start; gap: 0.6rem; width: 100%; }
             .status-wrapper, .page-tracker { width: 100%; }
             .status-select { width: 100%; text-align: left; font-size: 0.7rem; padding-top: 0.4rem; padding-bottom: 0.4rem; }
+            
+            .btn-move-to-library { width: 100%; justify-content: center; padding: 0.6rem; font-size: 0.7rem; }
             .btn-delete { width: 36px; height: 36px; background: var(--bg-main); border: 1px solid var(--border); }
             .btn-delete svg { width: 16px; height: 16px; }
             
@@ -615,6 +615,7 @@
                 const isLib = book.list === 'library';
                 let statusIcon = book.status === 'reading' ? 'book-open' : (book.status === 'read' ? 'check-circle-2' : 'circle');
                 
+                // РІЗНІ КНОПКИ ДЛЯ ПОЛИЦІ ТА БАЖАНОГО
                 const libraryActions = isLib ? `
                     <div class="status-wrapper">
                         <i data-lucide="${statusIcon}" class="status-icon"></i>
@@ -625,7 +626,7 @@
                         </select>
                     </div>
                     ${book.status === 'reading' ? `<div class="page-tracker"><i data-lucide="bookmark" style="width:14px"></i><input type="number" class="page-input" value="${book.page||0}" onchange="updateBookField('${book.id}', 'page', this.value)" min="0"></div>` : ''}
-                ` : `<div class="wishlist-footer-text"><i data-lucide="sparkles" style="width:14px;"></i> У списку бажаного</div>`;
+                ` : `<button class="btn-move-to-library" onclick="updateBookField('${book.id}', 'list', 'library')" title="Книгу куплено!"><i data-lucide="package-check" style="width:14px;"></i> Придбано</button>`;
 
                 const badgeHtml = searchQuery ? `<div class="list-badge"><i data-lucide="${isLib?'book-open':'sparkles'}" style="width:10px;"></i> ${isLib?'Полиця':'Бажане'}</div>` : '';
                 const imgHtml = book.cover ? `<img src="${book.cover}" class="cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="cover-placeholder" style="display:none;"><i data-lucide="image-off"></i>Без фото</div>` : `<div class="cover-placeholder"><i data-lucide="book" style="margin-bottom:8px;width:24px;opacity:0.5;"></i>${book.title}</div>`;
