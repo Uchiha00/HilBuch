@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>HilBuch</title>
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23111111%22 stroke-width=%222.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z%22></path><path d=%22M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z%22></path></svg>" type="image/svg+xml">
+    <link id="dynamic-favicon" rel="icon" href="" type="image/svg+xml">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,8 +15,8 @@
     <style>
         /* --- 9 КАРДИНАЛЬНО РІЗНИХ ТЕМ --- */
         :root {
-            /* 1. ПАПІР */
-            --font-heading: 'Lora', serif; --font-body: 'Plus Jakarta Sans', sans-serif;
+            --font-heading: 'Lora', serif; 
+            --font-body: 'Plus Jakarta Sans', sans-serif;
             --bg-main: #F7F4EF; --surface: #FFFFFF; --surface-glass: rgba(255, 255, 255, 0.85);
             --ink: #302B27; --ink-muted: #827C75; --border: #E8E3D8; --border-glass: rgba(48, 43, 39, 0.08);
             --accent: #B85C47; --page-edge: #EBE5DB; --placeholder: #BDB8B0;
@@ -28,126 +28,67 @@
             --transition-theme: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
         }
 
-        /* 2. МІНІМАЛІЗМ */
-        [data-theme="minimal"] { 
-            --font-heading: 'Plus Jakarta Sans', sans-serif; 
-            --bg-main: #FFFFFF; --surface: #FFFFFF; --surface-glass: rgba(255, 255, 255, 0.95); 
-            --ink: #000000; --ink-muted: #737373; --border: #000000; --border-glass: #000000; 
-            --accent: #000000; --page-edge: #F3F3F3; --bg-texture: none; 
-            --shadow-float: 6px 6px 0px rgba(0,0,0,1); --shadow-card: 2px 2px 0px rgba(0,0,0,1); --shadow-nav: 0 4px 12px rgba(0,0,0,0.1);
-            --status-reading-bg: #000000; --status-reading-text: #FFFFFF; --status-read-bg: #FFFFFF; --status-read-text: #000000; --status-unread-bg: #E5E5E5; --status-unread-text: #000000;
-            --radius-card: 0px; 
-        }
-
-        /* 3. ШАВЛІЯ */
-        [data-theme="sage"] { 
-            --bg-main: #E9ECE5; --surface: #F4F7F2; --surface-glass: rgba(244, 247, 242, 0.85); 
-            --ink: #2C362B; --ink-muted: #657563; --border: #D1DACD; --border-glass: rgba(44, 54, 43, 0.1); 
-            --accent: #4A6756; --page-edge: #E3EAE0; --bg-texture: radial-gradient(rgba(74,103,86,0.04) 1px, transparent 0); 
-            --status-reading-bg: #D4E0D6; --status-reading-text: #2C362B; --status-read-bg: #A3C9A8; --status-read-text: #19381E; --status-unread-bg: #EAECE8; --status-unread-text: #657563; 
-        }
-
-        /* 4. ПІВНІЧ */
-        [data-theme="midnight"] { 
-            --font-heading: 'Plus Jakarta Sans', sans-serif; 
-            --bg-main: #050505; --surface: #121212; --surface-glass: rgba(18, 18, 18, 0.85); 
-            --ink: #F5F5F5; --ink-muted: #888888; --border: #222222; --border-glass: rgba(255, 255, 255, 0.08); 
-            --accent: #3B82F6; --page-edge: #1A1A1A; --placeholder: #555555; --bg-texture: none; 
-            --shadow-float: 0 24px 48px rgba(0,0,0,0.8), 0 0 20px rgba(59, 130, 246, 0.15); --shadow-card: 0 4px 12px rgba(0,0,0,0.5); 
-            --status-reading-bg: #1E3A8A; --status-reading-text: #BFDBFE; --status-read-bg: #064E3B; --status-read-text: #A7F3D0; --status-unread-bg: #262626; --status-unread-text: #A3A3A3; 
-        }
-
-        /* 5. МОККО */
-        [data-theme="mocha"] { 
-            --font-heading: 'Lora', serif; 
-            --bg-main: #231C18; --surface: #302621; --surface-glass: rgba(48, 38, 33, 0.85); 
-            --ink: #E8DCCB; --ink-muted: #A39183; --border: #4A3C34; --border-glass: rgba(255, 255, 255, 0.06); 
-            --accent: #D2946F; --page-edge: #3B2F28; --placeholder: #736458; 
-            --bg-texture: radial-gradient(rgba(232, 220, 203, 0.02) 1px, transparent 0); 
-            --shadow-float: 0 24px 48px rgba(0,0,0,0.6); --shadow-card: 0 4px 16px rgba(0,0,0,0.4); 
-            --status-reading-bg: #5D3E2B; --status-reading-text: #F7D4BA; --status-read-bg: #2B4031; --status-read-text: #A5D6B1; --status-unread-bg: #40342C; --status-unread-text: #B4A69A; 
-        }
-
-        /* 6. ОКСАМИТ */
-        [data-theme="velvet"] { 
-            --bg-main: #240E14; --surface: #36151E; --surface-glass: rgba(54, 21, 30, 0.85); 
-            --ink: #FDF3F5; --ink-muted: #D19CA9; --border: #5C2433; --border-glass: rgba(212, 175, 55, 0.2); 
-            --accent: #D4AF37; --page-edge: #471C28; --placeholder: #A66E7E; 
-            --bg-texture: radial-gradient(rgba(212, 175, 55, 0.04) 1px, transparent 0); 
-            --shadow-float: 0 24px 48px rgba(0,0,0,0.8), 0 0 20px rgba(212, 175, 55, 0.08); 
-            --status-reading-bg: #592231; --status-reading-text: #FAD1DE; --status-read-bg: #1A3825; --status-read-text: #A1E8B9; --status-unread-bg: #471C28; --status-unread-text: #D19CA9; 
-        }
-
-        /* 7. ЛАВАНДА */
-        [data-theme="lavender"] { 
-            --font-heading: 'Lora', serif; 
-            --bg-main: #F4F0FB; --surface: #FFFFFF; --surface-glass: rgba(255, 255, 255, 0.85); 
-            --ink: #4B3A5A; --ink-muted: #9D8BB0; --border: #E6DDF2; --border-glass: rgba(138, 100, 184, 0.1); 
-            --accent: #8A64B8; --page-edge: #EFE9F6; --placeholder: #C5B9D4; 
-            --bg-texture: radial-gradient(rgba(138,100,184,0.04) 1px, transparent 0); 
-            --status-reading-bg: #EDE6F5; --status-reading-text: #6A4B91; --status-read-bg: #E6F0E9; --status-read-text: #456B52; --status-unread-bg: #F0EDF5; --status-unread-text: #9D8BB0; 
-        }
-
-        /* 8. ЦУКРОВА ВАТА */
-        [data-theme="cotton-candy"] { 
-            --bg-main: #FCF9FA; --surface: #FFFFFF; --surface-glass: rgba(255, 255, 255, 0.85); 
-            --ink: #4A3F45; --ink-muted: #A0949B; --border: #F7E9F0; --border-glass: rgba(255, 158, 187, 0.2); 
-            --accent: #FF9EBB; --page-edge: #F4F8FA; --placeholder: #D3C9D0; 
-            --bg-texture: radial-gradient(circle at 0% 0%, #FFE5F1 0%, transparent 50%), radial-gradient(circle at 100% 100%, #E3F4FE 0%, transparent 50%); --bg-size: 100% 100%;
-            --status-reading-bg: #E3F4FE; --status-reading-text: #428BCA; --status-read-bg: #D1FAE5; --status-read-text: #065F46; --status-unread-bg: #F4F3F5; --status-unread-text: #A0949B;
-            --shadow-float: 0 24px 48px rgba(255, 158, 187, 0.15); --shadow-card: 0 4px 16px rgba(255, 158, 187, 0.08); 
-        }
-
-        /* 🦇 9. АДЕЛІНА */
-        [data-theme="adeline"] { 
-            --font-heading: 'Lora', serif; 
-            --bg-main: #0a0506; --surface: #160b0d; --surface-glass: rgba(22, 11, 13, 0.85); 
-            --ink: #e3d1d4; --ink-muted: #8c7377; --border: #3b1b22; --border-glass: rgba(138, 3, 26, 0.2); 
-            --accent: #8a031a; --page-edge: #120b0c; --placeholder: #5c4348; 
-            --bg-texture: radial-gradient(circle at 50% 0%, rgba(138, 3, 26, 0.15) 0%, transparent 70%), radial-gradient(circle at 100% 100%, rgba(138, 3, 26, 0.1) 0%, transparent 50%); --bg-size: 100% 100%;
-            --shadow-float: 0 24px 48px rgba(0,0,0,0.9), 0 0 30px rgba(138, 3, 26, 0.15); --shadow-card: 0 4px 16px rgba(0,0,0,0.8); 
-            --status-reading-bg: #2a0b12; --status-reading-text: #d67c8e; --status-read-bg: #0f291a; --status-read-text: #7bbd91; --status-unread-bg: #211517; --status-unread-text: #8c7377; 
-        }
+        [data-theme="minimal"] { --bg-main: #FFFFFF; --surface: #FFFFFF; --surface-glass: rgba(255, 255, 255, 0.95); --ink: #000000; --ink-muted: #737373; --border: #000000; --border-glass: #000000; --accent: #000000; --page-edge: #F3F3F3; --bg-texture: none; --shadow-float: 6px 6px 0px rgba(0,0,0,1); --shadow-card: 2px 2px 0px rgba(0,0,0,1); --shadow-nav: 0 4px 12px rgba(0,0,0,0.1); --status-reading-bg: #000000; --status-reading-text: #FFFFFF; --status-read-bg: #FFFFFF; --status-read-text: #000000; --status-unread-bg: #E5E5E5; --status-unread-text: #000000; --radius-card: 0px; }
+        [data-theme="sage"] { --bg-main: #E9ECE5; --surface: #F4F7F2; --surface-glass: rgba(244, 247, 242, 0.85); --ink: #2C362B; --ink-muted: #657563; --border: #D1DACD; --border-glass: rgba(44, 54, 43, 0.1); --accent: #4A6756; --page-edge: #E3EAE0; --bg-texture: radial-gradient(rgba(74,103,86,0.04) 1px, transparent 0); --status-reading-bg: #D4E0D6; --status-reading-text: #2C362B; --status-read-bg: #A3C9A8; --status-read-text: #19381E; --status-unread-bg: #EAECE8; --status-unread-text: #657563; }
+        [data-theme="midnight"] { --bg-main: #050505; --surface: #121212; --surface-glass: rgba(18, 18, 18, 0.85); --ink: #F5F5F5; --ink-muted: #888888; --border: #222222; --border-glass: rgba(255, 255, 255, 0.08); --accent: #3B82F6; --page-edge: #1A1A1A; --placeholder: #555555; --bg-texture: none; --shadow-float: 0 24px 48px rgba(0,0,0,0.8), 0 0 20px rgba(59, 130, 246, 0.15); --shadow-card: 0 4px 12px rgba(0,0,0,0.5); --status-reading-bg: #1E3A8A; --status-reading-text: #BFDBFE; --status-read-bg: #064E3B; --status-read-text: #A7F3D0; --status-unread-bg: #262626; --status-unread-text: #A3A3A3; }
+        [data-theme="mocha"] { --bg-main: #231C18; --surface: #302621; --surface-glass: rgba(48, 38, 33, 0.85); --ink: #E8DCCB; --ink-muted: #A39183; --border: #4A3C34; --border-glass: rgba(255, 255, 255, 0.06); --accent: #D2946F; --page-edge: #3B2F28; --placeholder: #736458; --bg-texture: radial-gradient(rgba(232, 220, 203, 0.02) 1px, transparent 0); --shadow-float: 0 24px 48px rgba(0,0,0,0.6); --shadow-card: 0 4px 16px rgba(0,0,0,0.4); --status-reading-bg: #5D3E2B; --status-reading-text: #F7D4BA; --status-read-bg: #2B4031; --status-read-text: #A5D6B1; --status-unread-bg: #40342C; --status-unread-text: #B4A69A; }
+        [data-theme="velvet"] { --bg-main: #240E14; --surface: #36151E; --surface-glass: rgba(54, 21, 30, 0.85); --ink: #FDF3F5; --ink-muted: #D19CA9; --border: #5C2433; --border-glass: rgba(212, 175, 55, 0.2); --accent: #D4AF37; --page-edge: #471C28; --placeholder: #A66E7E; --bg-texture: radial-gradient(rgba(212, 175, 55, 0.04) 1px, transparent 0); --shadow-float: 0 24px 48px rgba(0,0,0,0.8), 0 0 20px rgba(212, 175, 55, 0.08); --status-reading-bg: #592231; --status-reading-text: #FAD1DE; --status-read-bg: #1A3825; --status-read-text: #A1E8B9; --status-unread-bg: #471C28; --status-unread-text: #D19CA9; }
+        [data-theme="lavender"] { --bg-main: #F4F0FB; --surface: #FFFFFF; --surface-glass: rgba(255, 255, 255, 0.85); --ink: #4B3A5A; --ink-muted: #9D8BB0; --border: #E6DDF2; --border-glass: rgba(138, 100, 184, 0.1); --accent: #8A64B8; --page-edge: #EFE9F6; --placeholder: #C5B9D4; --bg-texture: radial-gradient(rgba(138,100,184,0.04) 1px, transparent 0); --status-reading-bg: #EDE6F5; --status-reading-text: #6A4B91; --status-read-bg: #E6F0E9; --status-read-text: #456B52; --status-unread-bg: #F0EDF5; --status-unread-text: #9D8BB0; }
+        [data-theme="cotton-candy"] { --bg-main: #FCF9FA; --surface: #FFFFFF; --surface-glass: rgba(255, 255, 255, 0.85); --ink: #4A3F45; --ink-muted: #A0949B; --border: #F7E9F0; --border-glass: rgba(255, 158, 187, 0.2); --accent: #FF9EBB; --page-edge: #F4F8FA; --placeholder: #D3C9D0; --bg-texture: radial-gradient(circle at 0% 0%, #FFE5F1 0%, transparent 50%), radial-gradient(circle at 100% 100%, #E3F4FE 0%, transparent 50%); --bg-size: 100% 100%; --status-reading-bg: #E3F4FE; --status-reading-text: #428BCA; --status-read-bg: #D1FAE5; --status-read-text: #065F46; --status-unread-bg: #F4F3F5; --status-unread-text: #A0949B; --shadow-float: 0 24px 48px rgba(255, 158, 187, 0.15); --shadow-card: 0 4px 16px rgba(255, 158, 187, 0.08); }
+        [data-theme="adeline"] { --font-heading: 'Lora', serif; --bg-main: #0a0506; --surface: #160b0d; --surface-glass: rgba(22, 11, 13, 0.85); --ink: #e3d1d4; --ink-muted: #8c7377; --border: #3b1b22; --border-glass: rgba(138, 3, 26, 0.2); --accent: #8a031a; --page-edge: #120b0c; --placeholder: #5c4348; --bg-texture: radial-gradient(circle at 50% 0%, rgba(138, 3, 26, 0.15) 0%, transparent 70%), radial-gradient(circle at 100% 100%, rgba(138, 3, 26, 0.1) 0%, transparent 50%); --bg-size: 100% 100%; --shadow-float: 0 24px 48px rgba(0,0,0,0.9), 0 0 30px rgba(138, 3, 26, 0.15); --shadow-card: 0 4px 16px rgba(0,0,0,0.8); --status-reading-bg: #2a0b12; --status-reading-text: #d67c8e; --status-read-bg: #0f291a; --status-read-text: #7bbd91; --status-unread-bg: #211517; --status-unread-text: #8c7377; }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: var(--font-body); background-color: var(--bg-main); color: var(--ink); line-height: 1.6; padding: 2rem 1.5rem 6rem; max-width: 960px; margin: 0 auto; -webkit-font-smoothing: antialiased; background-image: var(--bg-texture); background-size: var(--bg-size); background-attachment: fixed; transition: var(--transition-theme); min-height: 100vh; position: relative; }
 
-        /* HEADER */
-        header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; gap: 1rem; position: relative; z-index: 10; }
+        /* HEADER & CONTROLS */
+        header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; gap: 1rem; position: relative; z-index: 10; flex-wrap: wrap; }
         .header-left { display: flex; flex-direction: column; gap: 0.2rem; }
         h1 { font-family: var(--font-heading); font-size: 2.8rem; font-weight: 600; letter-spacing: -0.03em; margin: 0; transition: var(--transition-theme); }
         .stats { font-size: 0.85rem; color: var(--ink-muted); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
         
-        .theme-selector { display: flex; gap: 0.4rem; background: var(--surface); padding: 0.5rem; border-radius: 100px; box-shadow: var(--shadow-card); border: 1px solid var(--border); transition: var(--transition-theme); max-width: 280px; flex-wrap: wrap; justify-content: flex-end;}
-        .theme-btn { width: 22px; height: 22px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: var(--transition); box-shadow: 0 2px 4px rgba(0,0,0,0.1);}
-        .theme-btn:hover { transform: scale(1.15); }
-        .theme-btn.active { border-color: var(--accent); transform: scale(1.2); box-shadow: 0 0 0 3px var(--bg-main); }
+        .header-right { display: flex; flex-direction: column; align-items: flex-end; gap: 1rem; width: 100%; flex: 1; max-width: max-content;}
+        .header-controls-row { display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; justify-content: flex-end; width: 100%;}
         
-        #theme-paper { background: #F7F4EF; border-color: #E8E3D8; } #theme-minimal { background: #000000; border-color: #CCCCCC; } #theme-sage { background: #4A6756; border-color: #D1DACD; } #theme-midnight { background: #121212; border-color: #3B82F6; } #theme-mocha { background: #302621; border-color: #D2946F; } #theme-velvet { background: #36151E; border-color: #D4AF37; } #theme-lavender { background: #F4F0FB; border-color: #8A64B8; } #theme-cotton-candy { background: linear-gradient(135deg, #FF9EBB 50%, #38BDF8 50%); border-color: #FBCFE8; } #theme-adeline { background: #8a031a; border: 1px solid #000; }
+        .gift-btn { background: var(--surface); border: 1px solid var(--border); color: var(--ink-muted); padding: 0.5rem 1rem; border-radius: 100px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px; transition: var(--transition); box-shadow: var(--shadow-card); }
+        .gift-btn.locked { cursor: not-allowed; opacity: 0.8; }
+        .gift-btn.unlocked { cursor: pointer; background: linear-gradient(135deg, #FF9EBB, #8A64B8); color: white; border: none; box-shadow: 0 4px 15px rgba(138, 100, 184, 0.4); animation: pulseGift 2s infinite; }
+        @keyframes pulseGift { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+        /* 🔥 КНОПКА САГИ В ШАПЦІ 🔥 */
+        .header-saga-toggle { background: var(--surface); border: 1px solid var(--border); color: var(--ink-muted); padding: 0.5rem 1.2rem; border-radius: 100px; font-size: 0.8rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: var(--transition); box-shadow: var(--shadow-card); font-family: inherit;}
+        .header-saga-toggle:hover { border-color: var(--accent); color: var(--ink); }
+        .header-saga-toggle.active { background: var(--accent); color: var(--bg-main); border-color: var(--accent); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        [data-theme="minimal"] .header-saga-toggle { border-radius: 0; }
+        [data-theme="paper"] .header-saga-toggle.active, [data-theme="sage"] .header-saga-toggle.active, [data-theme="lavender"] .header-saga-toggle.active, [data-theme="cotton-candy"] .header-saga-toggle.active { color: #FFFFFF; }
+        [data-theme="minimal"] .header-saga-toggle.active { background: #000; color: #FFF; }
+
+        .theme-selector { display: flex; gap: 0.4rem; background: var(--surface); padding: 0.5rem 0.8rem; border-radius: 100px; box-shadow: var(--shadow-card); border: 1px solid var(--border); transition: var(--transition-theme); overflow-x: auto; scrollbar-width: none; }
+        .theme-selector::-webkit-scrollbar { display: none; }
+        .theme-btn { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: var(--transition); box-shadow: 0 2px 4px rgba(0,0,0,0.2);}
+        .theme-btn.active { transform: scale(1.1); box-shadow: 0 0 0 2px var(--bg-main), 0 0 0 4px var(--accent); border-color: var(--bg-main); }
+        
+        #theme-paper { background: #F7F4EF; } #theme-minimal { background: #000000; } #theme-sage { background: #4A6756; } #theme-midnight { background: #121212; border: 1px solid #3B82F6; } #theme-mocha { background: #302621; } #theme-velvet { background: #36151E; border: 1px solid #D4AF37; } #theme-lavender { background: #F4F0FB; border: 1px solid #8A64B8; } #theme-cotton-candy { background: linear-gradient(135deg, #FF9EBB 50%, #38BDF8 50%); border: 1px solid #FBCFE8; } #theme-adeline { background: #8a031a; border: 1px solid #000; }
 
         /* СТАТИЧНА НАВІГАЦІЯ */
         .nav-wrapper { display: flex; justify-content: center; margin-bottom: 2.5rem; width: 100%; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-bottom: 4px; }
         .nav-wrapper::-webkit-scrollbar { display: none; }
         .main-nav { background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 0.4rem; display: flex; align-items: center; gap: 0.5rem; box-shadow: var(--shadow-card); transition: var(--transition-theme); width: max-content; margin: 0 auto; }
-        
         .nav-group { display: flex; background: var(--bg-main); border-radius: 100px; padding: 3px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.03); border: 1px solid var(--border-glass); transition: var(--transition-theme); }
         [data-theme="midnight"] .nav-group, [data-theme="mocha"] .nav-group, [data-theme="velvet"] .nav-group, [data-theme="adeline"] .nav-group { background: rgba(0,0,0,0.3); }
         [data-theme="minimal"] .nav-group { border-radius: 0; } [data-theme="minimal"] .main-nav { border-radius: 0; }
-        
         .nav-btn { padding: 0.6rem 1.2rem; background: transparent; border: none; border-radius: 100px; color: var(--ink-muted); font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: var(--transition); display: flex; align-items: center; gap: 6px; font-family: inherit; }
         [data-theme="minimal"] .nav-btn { border-radius: 0; }
         .nav-btn.active { background: var(--accent); color: var(--bg-main); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
         [data-theme="paper"] .nav-btn.active, [data-theme="sage"] .nav-btn.active, [data-theme="lavender"] .nav-btn.active, [data-theme="cotton-candy"] .nav-btn.active { color: #FFFFFF; }
         [data-theme="minimal"] .nav-btn.active { background: #000; color: #FFF; }
         .nav-btn svg { width: 14px; height: 14px; }
-        
         .nav-divider { width: 1px; height: 24px; background: var(--border); margin: 0 0.2rem; opacity: 0.5; }
         .fab-add { background: var(--accent); color: var(--bg-main); border: none; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-left: 0.5rem; flex-shrink: 0;}
         [data-theme="minimal"] .fab-add { border-radius: 0; background: #000; color: #FFF; }
         [data-theme="paper"] .fab-add, [data-theme="sage"] .fab-add, [data-theme="lavender"] .fab-add, [data-theme="cotton-candy"] .fab-add { color: #FFFFFF; }
         .fab-add:hover { transform: scale(1.05) rotate(90deg); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
 
-        /* ІНСТРУМЕНТИ */
+        /* ІНСТРУМЕНТИ ТА СОРТУВАННЯ */
         .toolbar { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; align-items: center; justify-content: space-between; }
         .search-bar { flex: 1; min-width: 200px; display: flex; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 0.7rem 1.2rem; transition: var(--transition); box-shadow: var(--shadow-card); }
         [data-theme="minimal"] .search-bar { border-radius: 0; }
@@ -169,15 +110,57 @@
         .sort-select:hover { color: var(--ink); }
         .sort-box::after { content: "▼"; position: absolute; right: 14px; font-size: 0.6rem; color: var(--ink-muted); pointer-events: none; }
 
-        /* ГРУПУВАННЯ */
-        .group-header { width: 100%; padding: 1.5rem 0 0.5rem; font-family: var(--font-heading); font-size: 1.8rem; font-weight: 600; color: var(--ink); border-bottom: 1px solid var(--border); margin-bottom: -1rem; display: flex; align-items: center; gap: 0.8rem; animation: slideUp 0.4s ease forwards; }
+        /* 🔥 БЛОК САГИ (ПАПКИ) 🔥 */
+        .saga-block { background: var(--surface-glass); border: 1px solid var(--border); border-radius: var(--radius-card); margin-bottom: 2rem; box-shadow: var(--shadow-card); transition: var(--transition-theme); overflow: hidden; backdrop-filter: blur(10px); }
+        [data-theme="minimal"] .saga-block { border-radius: 0; border: 2px solid #000; box-shadow: 4px 4px 0px #000; }
+        .saga-header { padding: 1.5rem 1.5rem 0.5rem; cursor: pointer; display: flex; flex-direction: column; gap: 1rem; background: transparent; transition: var(--transition); position: relative; z-index: 2; border-bottom: 1px solid transparent; }
+        .saga-header:hover { background: var(--page-edge); }
+        .saga-block.open .saga-header { border-bottom-color: var(--border); }
+        
+        .saga-header-top { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .saga-title { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 600; color: var(--ink); display: flex; align-items: center; gap: 0.6rem; }
+        .saga-title i { color: var(--accent); }
+        .saga-stats { font-size: 0.8rem; font-family: var(--font-body); background: var(--bg-main); padding: 0.4rem 1rem; border-radius: 100px; color: var(--ink-muted); font-weight: 700; border: 1px solid var(--border-glass); display: flex; align-items: center; gap: 8px; }
+        .saga-chevron { transition: transform 0.3s ease; color: var(--ink-muted); }
+        .saga-block.open .saga-chevron { transform: rotate(180deg); }
+        
+        /* Горизонтальна полиця з ВЕЛИКИМИ обкладинками */
+        .saga-mini-shelf { display: flex; gap: 1.5rem; overflow-x: auto; padding: 1rem 0.5rem 1.5rem 0.5rem; scrollbar-width: none; margin: 0 -0.5rem; pointer-events: none; align-items: flex-end;}
+        .saga-mini-shelf::-webkit-scrollbar { display: none; }
+        
+        .mini-saga-book { position: relative; width: 140px; height: 210px; flex-shrink: 0; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .saga-header:hover .mini-saga-book { transform: translateY(-8px); }
+        .mini-saga-book .cover-wrapper { pointer-events: none; margin: 0; box-shadow: -4px 0 12px rgba(0,0,0,0.06), 4px 8px 24px rgba(0,0,0,0.15); height: 100%; padding-bottom: 0; }
+        .mini-vol { position: absolute; bottom: -12px; right: -12px; background: var(--accent); color: var(--bg-main); font-size: 0.9rem; font-weight: 800; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--surface); box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 5;}
+        [data-theme="minimal"] .mini-vol { border-radius: 0; border: 2px solid #000; }
+        [data-theme="paper"] .mini-vol, [data-theme="sage"] .mini-vol, [data-theme="lavender"] .mini-vol, [data-theme="cotton-candy"] .mini-vol { color: #FFFFFF; }
+        [data-theme="minimal"] .mini-vol { color: #FFF; background: #000; }
+
+        /* 🔥 ЗАПОВНЮВАЧ ПУСТОГО МІСЦЯ (Силует книги) 🔥 */
+        .shelf-filler { width: 140px; height: 210px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px dashed var(--border); border-radius: 4px 12px 12px 4px; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease; opacity: 0.6; background: transparent; }
+        .saga-header:hover .shelf-filler { transform: translateY(-8px); border-color: var(--ink-muted); opacity: 0.8; }
+        .shelf-filler i { color: var(--ink-muted); margin-bottom: 8px; opacity: 0.7; }
+        .shelf-filler span { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-muted); opacity: 0.8; }
+        [data-theme="minimal"] .shelf-filler { border-radius: 0; border: 2px dashed #000; }
+        
+        /* Виправлено баг з анімацією відкривання */
+        .saga-content { display: none; padding: 1.5rem 0 0 0; flex-direction: column; gap: 0; background: transparent; }
+        .saga-block.open .saga-content { display: flex; }
+        .saga-block.open .saga-mini-shelf { display: none; }
+        /* Картки всередині саги не мають подвійних тіней та зовнішніх відступів */
+        .saga-content .card { border-radius: 0; border: none; border-bottom: 1px solid var(--border); box-shadow: none; margin: 0; }
+        .saga-content .card:last-child { border-bottom: none; border-radius: 0 0 var(--radius-card) var(--radius-card); }
+        [data-theme="minimal"] .saga-content .card { border-bottom: 2px solid #000; }
+
+        /* ЗВИЧАЙНІ ЗАГОЛОВКИ (ДЛЯ АВТОРІВ І ВИДАВНИЦТВ) */
+        .group-header { width: 100%; padding: 1.5rem 0 0.5rem; font-family: var(--font-heading); font-size: 1.6rem; font-weight: 600; color: var(--ink); border-bottom: 1px solid var(--border); margin-bottom: -0.5rem; display: flex; align-items: center; gap: 0.8rem; animation: slideUp 0.4s ease forwards; }
         .group-header i { color: var(--accent); opacity: 0.8; }
 
         /* КАРТКИ КНИГ */
-        .grid { display: flex; flex-direction: column; gap: 2rem; }
-        .card { background: var(--surface); border-radius: var(--radius-card); display: flex; flex-direction: row; padding: 1.5rem; transition: var(--transition-theme), transform 0.4s ease, box-shadow 0.4s ease; opacity: 0; transform: translateY(20px); animation: staggerFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; box-shadow: var(--shadow-card); border: 1px solid var(--border); position: relative; }
+        .grid { display: flex; flex-direction: column; gap: 1.5rem; }
+        .card { background: var(--surface); border-radius: var(--radius-card); display: flex; flex-direction: row; padding: 1.5rem; transition: var(--transition-theme), transform 0.4s ease, box-shadow 0.4s ease; opacity: 0; transform: translateY(20px); animation: staggerFadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; box-shadow: var(--shadow-card); border: 1px solid var(--border); position: relative; }
         @keyframes staggerFadeUp { to { opacity: 1; transform: translateY(0); } }
-        .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-float); border-color: var(--border-glass); }
+        .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-float); border-color: var(--border-glass); z-index: 5;}
 
         .cover-container { position: relative; width: 140px; flex-shrink: 0; margin-right: 2rem; perspective: 1000px; }
         .cover-wrapper { position: relative; width: 100%; padding-bottom: 150%; border-radius: 4px 12px 12px 4px; box-shadow: -4px 0 12px rgba(0,0,0,0.06), 4px 8px 24px rgba(0,0,0,0.15); transition: transform 0.5s ease; transform-style: preserve-3d; background: var(--bg-main); border: 1px solid var(--border-glass); cursor: zoom-in; }
@@ -188,13 +171,14 @@
         .cover-spine { position: absolute; left: 0; top: 0; bottom: 0; width: 12px; z-index: 3; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 20%, rgba(0,0,0,0.05) 100%); border-radius: 4px 0 0 4px; pointer-events: none; }
         [data-theme="minimal"] .cover-spine { display: none; }
         
-        .edit-cover-btn { position: absolute; top: 0.5rem; right: 0.5rem; z-index: 4; background: rgba(0,0,0,0.6); color: white; border: none; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0; cursor: pointer; transition: var(--transition); backdrop-filter: blur(4px); box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .edit-cover-btn { position: absolute; top: 0.5rem; right: 0.5rem; z-index: 4; background: rgba(0,0,0,0.6); color: white; border: none; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0; cursor: pointer; transition: var(--transition); backdrop-filter: blur(4px); box-shadow: 0 2px 8px rgba(0,0,0,0.2); pointer-events: auto; }
         .cover-wrapper:hover .edit-cover-btn { opacity: 1; }
         .edit-cover-btn:hover { background: var(--accent); color: var(--bg-main); transform: scale(1.15); }
         
         .card-content { display: flex; flex-direction: column; flex: 1; min-width: 0; justify-content: space-between; padding: 0.5rem 0; position: relative; }
         
-        .list-badge { display: inline-flex; align-items: center; gap: 4px; width: fit-content; margin-bottom: 0.5rem; padding: 0.3rem 0.8rem; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 100px; background: var(--page-edge); color: var(--ink-muted); border: 1px solid var(--border); }
+        .badge-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; }
+        .list-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.3rem 0.8rem; border-radius: 100px; background: var(--page-edge); color: var(--ink-muted); border: 1px solid var(--border); }
         [data-theme="minimal"] .list-badge { border-radius: 0; }
 
         .editable-input { width: 100%; background: transparent; border: 1px solid transparent; outline: none; padding: 0; margin: 0; transition: var(--transition); border-radius: 6px; color: var(--ink); text-overflow: ellipsis; }
@@ -208,6 +192,9 @@
         [data-theme="minimal"] .book-publisher-input { border-radius: 0; border: 1px solid #000; }
         .book-publisher-input:hover, .book-publisher-input:focus { background: var(--surface); border-color: var(--accent); color: var(--ink); }
 
+        /* БЕЙДЖ СЕРІЇ */
+        .series-badge { font-size: 0.75rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem; display: inline-flex; align-items: center; gap: 4px;}
+
         .note-container { margin-top: auto; background: var(--page-edge); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 6px 12px 12px 6px; padding: 0.8rem 1.2rem; display: flex; flex-direction: column; gap: 0.4rem; transition: var(--transition-theme); }
         .note-container:focus-within { box-shadow: 0 0 0 3px var(--border-glass); border-color: var(--accent); }
         [data-theme="minimal"] .note-container { border-radius: 0; border: 2px solid #000; border-left: 6px solid #000; }
@@ -215,10 +202,16 @@
         .note-input { width: 100%; padding: 0; font-size: 0.9rem; border: none; background: transparent; color: var(--ink); resize: vertical; min-height: 30px; font-family: inherit; line-height: 1.5; outline: none; }
         .note-input::placeholder { color: var(--placeholder); font-style: italic; }
 
-        /* ФУТЕР ІЗ КНОПКОЮ ВИДАЛЕННЯ ТА КНОПКОЮ "ПРИДБАНО" */
-        .card-footer { margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end; padding-top: 1.2rem; border-top: 1px dashed var(--border); gap: 1rem; }
+        /* 🔥 ФУТЕР ІЗ РЕЙТИНГОМ 🔥 */
+        .card-footer { margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end; padding-top: 1.2rem; border-top: 1px dashed var(--border); gap: 1rem; flex-wrap: wrap;}
         .footer-left-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; flex: 1; }
+        .footer-right-actions { display: flex; gap: 1rem; align-items: center; }
         
+        .rating-container { display: flex; gap: 4px; align-items: center; margin-right: 0.5rem;}
+        .rate-icon { width: 22px; height: 22px; cursor: pointer; transition: var(--transition); stroke: var(--ink-muted); fill: transparent; opacity: 0.4;}
+        .rate-icon:hover { transform: scale(1.15); stroke: var(--accent); opacity: 1; }
+        .rate-icon.active { stroke: var(--accent); fill: var(--accent); opacity: 1; filter: drop-shadow(0 0 4px var(--border-glass)); }
+
         .status-wrapper { position: relative; }
         .status-select { padding: 0.5rem 1.2rem 0.5rem 2.4rem; border: none; border-radius: 100px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; outline: none; transition: var(--transition-theme); font-family: inherit; appearance: none; }
         [data-theme="minimal"] .status-select { border-radius: 0; border: 2px solid #000; }
@@ -231,16 +224,24 @@
         .page-input { width: 45px; font-size: 0.9rem; text-align: center; border: none; background: transparent; font-weight: 700; color: var(--ink); outline: none; border-bottom: 2px dotted var(--border); transition: var(--transition); }
         .page-input:focus { border-bottom-color: var(--accent); }
 
-        /* Кнопка "Придбано! На полицю" у Бажаному */
         .btn-move-to-library { background: var(--accent); color: var(--bg-main); border: none; padding: 0.5rem 1.2rem; border-radius: 100px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; transition: var(--transition); display: inline-flex; align-items: center; gap: 6px; font-family: inherit; }
         .btn-move-to-library:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); filter: brightness(1.1); }
         [data-theme="minimal"] .btn-move-to-library { border-radius: 0; background: #000; color: #FFF; }
         [data-theme="paper"] .btn-move-to-library, [data-theme="sage"] .btn-move-to-library, [data-theme="lavender"] .btn-move-to-library, [data-theme="cotton-candy"] .btn-move-to-library { color: #FFFFFF; }
 
-        .btn-delete { background: transparent; color: var(--ink-muted); border: 1px solid transparent; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); flex-shrink: 0; }
-        .btn-delete:hover { background: #FEE2E2; color: #E03131; border-color: #FCA5A5; transform: scale(1.1); box-shadow: var(--shadow-card); }
-        [data-theme="minimal"] .btn-delete { border-radius: 0; }
-        
+        .store-links { position: relative; }
+        .btn-stores { background: var(--page-edge); border: 1px solid var(--border); color: var(--ink-muted); padding: 0.5rem 1rem; border-radius: 100px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: var(--transition); }
+        .btn-stores:hover { border-color: var(--accent); color: var(--ink); }
+        .store-dropdown { position: absolute; bottom: 110%; left: 0; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow-float); padding: 0.5rem; display: none; flex-direction: column; gap: 0.2rem; min-width: 150px; z-index: 20; }
+        .store-links:hover .store-dropdown { display: flex; animation: slideUp 0.2s ease forwards; }
+        .store-dropdown a { color: var(--ink); text-decoration: none; font-size: 0.85rem; font-weight: 600; padding: 0.5rem 0.8rem; border-radius: 8px; transition: var(--transition); display: flex; align-items: center; justify-content: space-between;}
+        .store-dropdown a:hover { background: var(--bg-main); color: var(--accent); }
+
+        .icon-action-btn { background: transparent; color: var(--ink-muted); border: 1px solid transparent; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); flex-shrink: 0; }
+        .icon-action-btn:hover { background: var(--page-edge); color: var(--accent); border-color: var(--border); transform: scale(1.1); box-shadow: var(--shadow-card); }
+        .icon-action-btn.delete:hover { background: #FEE2E2; color: #E03131; border-color: #FCA5A5; }
+        [data-theme="minimal"] .icon-action-btn { border-radius: 0; }
+
         /* СКРОЛ ВГОРУ */
         .scroll-to-top { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--surface-glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--border-glass); color: var(--ink); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: var(--shadow-nav); opacity: 0; visibility: hidden; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); z-index: 90; }
         [data-theme="minimal"] .scroll-to-top { border-radius: 0; border: 2px solid #000; }
@@ -251,21 +252,22 @@
         /* MODAL */
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 1000; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; padding: 1rem; }
         .modal-overlay.active { display: flex; opacity: 1; }
-        .modal-content { background: var(--surface); width: 100%; max-width: 420px; border-radius: var(--radius-card); padding: 2.5rem; box-shadow: var(--shadow-float); border: 1px solid var(--border); transform: scale(0.9) translateY(30px); transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .modal-content { background: var(--surface); width: 100%; max-width: 420px; border-radius: var(--radius-card); padding: 2.5rem; box-shadow: var(--shadow-float); border: 1px solid var(--border); transform: scale(0.9) translateY(30px); transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); max-height: 90vh; overflow-y: auto; }
         [data-theme="minimal"] .modal-content { border-radius: 0; border: 4px solid #000; }
         .modal-overlay.active .modal-content { transform: scale(1) translateY(0); }
         .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
         .modal-header h2 { font-family: var(--font-heading); font-size: 1.6rem; margin: 0; }
-        .btn-close { background: var(--bg-main); border: 1px solid var(--border); color: var(--ink-muted); cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; }
+        .btn-close { background: var(--bg-main); border: 1px solid var(--border); color: var(--ink-muted); cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;}
         [data-theme="minimal"] .btn-close { border-radius: 0; }
         .btn-close:hover { color: var(--bg-main); background: var(--ink); border-color: var(--ink); transform: rotate(90deg); }
         
-        .input-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.2rem; }
+        .input-row { display: flex; gap: 1rem; }
+        .input-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.2rem; flex: 1; }
         .input-group label { font-size: 0.7rem; color: var(--ink-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-left: 0.5rem; }
-        .main-input { padding: 0.9rem 1.2rem; border: 1px solid var(--border); border-radius: 14px; font-size: 1rem; background: var(--bg-main); outline: none; transition: var(--transition); font-family: inherit; color: var(--ink); }
+        .main-input { padding: 0.9rem 1.2rem; border: 1px solid var(--border); border-radius: 14px; font-size: 1rem; background: var(--bg-main); outline: none; transition: var(--transition); font-family: inherit; color: var(--ink); width: 100%; }
         [data-theme="minimal"] .main-input { border-radius: 0; border: 2px solid #000; }
         .main-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--border-glass); background: var(--surface); }
-        .btn-submit { width: 100%; background: var(--accent); color: var(--bg-main); border: none; padding: 1rem; border-radius: 14px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: var(--transition); font-family: inherit; margin-top: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .btn-submit { width: 100%; background: var(--accent); color: var(--bg-main); border: none; padding: 1rem; border-radius: 14px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: var(--transition); font-family: inherit; margin-top: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
         [data-theme="minimal"] .btn-submit { border-radius: 0; }
         [data-theme="paper"] .btn-submit, [data-theme="sage"] .btn-submit, [data-theme="lavender"] .btn-submit, [data-theme="cotton-candy"] .btn-submit { color: #FFFFFF; }
         .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); filter: brightness(1.1); }
@@ -287,7 +289,8 @@
             body { padding: 1rem 1rem 2rem; } 
             header { flex-direction: column; align-items: center; text-align: center; margin-bottom: 1.5rem; }
             h1 { font-size: 2.4rem; }
-            .header-right { width: 100%; justify-content: center; align-items: center; }
+            
+            .header-controls-row { justify-content: center; margin-top: 0.5rem;}
             .theme-selector { justify-content: flex-start; max-width: 100%; padding: 0.5rem; }
             
             .nav-wrapper { margin-bottom: 1.5rem; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-bottom: 4px; display: block; white-space: nowrap; text-align: center; }
@@ -295,33 +298,45 @@
             .nav-btn { padding: 0.5rem 0.8rem; font-size: 0.8rem; gap: 4px; }
             .nav-btn svg { width: 12px; height: 12px; }
             .fab-add { width: 38px; height: 38px; margin-left: 0.2rem; }
-            .nav-divider { margin: 0 0.1rem; }
-
+            
             .toolbar { flex-direction: column; align-items: stretch; gap: 1rem; }
             .filters { padding-bottom: 0.5rem; }
             
+            .saga-header { padding: 1rem; }
+            .saga-header-top { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+            .saga-stats { margin-left: 0; }
+            .saga-mini-shelf { gap: 1rem; padding: 1rem 0.5rem; }
+            .mini-saga-book, .shelf-filler { width: 100px; height: 150px; }
+            
+            .saga-content { padding: 1rem 0; gap: 1rem; }
+            .saga-content .card { border-radius: 0; border-left: none; border-right: none; }
+
             .group-header { font-size: 1.4rem; }
             .grid { gap: 1rem; }
-            .card { flex-direction: row; padding: 1rem; align-items: stretch; gap: 1rem; } 
+            .card { flex-direction: column; padding: 1rem; gap: 1rem; } 
             
-            .cover-container { width: 90px; margin-right: 0; }
+            .cover-container { width: 120px; margin: 0 auto; }
             .card-content { padding: 0; justify-content: flex-start; }
-            .book-title-input { font-size: 1.25rem; } 
-            .author-pub-row { flex-direction: column; align-items: flex-start; gap: 0.4rem; margin-bottom: 0.5rem; }
-            .book-author-input { font-size: 0.9rem; }
-            .book-publisher-input { max-width: 100%; text-align: left; padding: 0.1rem 0.6rem; }
+            
+            .book-title-input { font-size: 1.5rem; text-align: center;} 
+            .author-pub-row { flex-direction: column; align-items: center; gap: 0.4rem; margin-bottom: 0.5rem; }
+            .book-author-input { font-size: 1rem; text-align: center; }
+            .book-publisher-input { max-width: 100%; text-align: center; }
             
             .note-container { padding: 0.6rem 0.8rem; margin-top: 0.5rem; }
             .note-input { font-size: 0.85rem; min-height: 24px; }
             
-            .card-footer { margin-top: 1rem; flex-direction: row; align-items: flex-end; gap: 0.5rem; border-top: none; padding-top: 0.5rem; }
-            .footer-left-actions { flex-direction: column; align-items: flex-start; gap: 0.6rem; width: 100%; }
-            .status-wrapper, .page-tracker { width: 100%; }
-            .status-select { width: 100%; text-align: left; font-size: 0.7rem; padding-top: 0.4rem; padding-bottom: 0.4rem; }
+            /* Мобільний футер з рейтингом */
+            .card-footer { margin-top: 1rem; flex-direction: column; align-items: stretch; gap: 0.8rem; border-top: none; padding-top: 0.5rem; }
+            .footer-left-actions { flex-direction: column; align-items: stretch; gap: 0.6rem; width: 100%; }
+            .footer-right-actions { justify-content: space-between; width: 100%; padding-top: 0.8rem; border-top: 1px dashed var(--border); }
             
-            .btn-move-to-library { width: 100%; justify-content: center; padding: 0.6rem; font-size: 0.7rem; }
-            .btn-delete { width: 36px; height: 36px; background: var(--bg-main); border: 1px solid var(--border); }
-            .btn-delete svg { width: 16px; height: 16px; }
+            .status-wrapper, .page-tracker, .store-links { width: 100%; }
+            .status-select { width: 100%; text-align: left; font-size: 0.8rem; padding-top: 0.6rem; padding-bottom: 0.6rem; }
+            .btn-stores, .btn-move-to-library { width: 100%; justify-content: center; padding: 0.8rem; }
+            .store-dropdown { bottom: auto; top: 110%; width: 100%; }
+            
+            .icon-action-btn { width: 40px; height: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
             
             .scroll-to-top { bottom: 1.5rem; }
         }
@@ -335,16 +350,26 @@
             <div class="stats">Книг у колекції: <strong id="total-count" style="color: var(--ink); font-size: 1.1rem;">0</strong></div>
         </div>
         <div class="header-right">
-            <div class="theme-selector" title="Оберіть тему">
-                <button class="theme-btn" id="theme-paper" onclick="changeTheme('paper')" title="Папір"></button>
-                <button class="theme-btn" id="theme-minimal" onclick="changeTheme('minimal')" title="Мінімалізм"></button>
-                <button class="theme-btn" id="theme-sage" onclick="changeTheme('sage')" title="Шавлія"></button>
-                <button class="theme-btn" id="theme-lavender" onclick="changeTheme('lavender')" title="Лаванда"></button>
-                <button class="theme-btn" id="theme-cotton-candy" onclick="changeTheme('cotton-candy')" title="Цукрова вата"></button>
-                <button class="theme-btn" id="theme-midnight" onclick="changeTheme('midnight')" title="Північ"></button>
-                <button class="theme-btn" id="theme-mocha" onclick="changeTheme('mocha')" title="Мокко"></button>
-                <button class="theme-btn" id="theme-velvet" onclick="changeTheme('velvet')" title="Оксамит"></button>
-                <button class="theme-btn" id="theme-adeline" onclick="changeTheme('adeline')" title="Аделіна"></button>
+            <div class="header-controls-row">
+                <button class="gift-btn locked" id="gift-btn">
+                    <i data-lucide="lock" style="width: 14px;"></i> <span id="gift-timer">Рахую...</span>
+                </button>
+                
+                <button class="header-saga-toggle" id="header-saga-toggle" onclick="toggleSagaMode()" title="Вимк / Увімк Саги">
+                    <i data-lucide="layers" style="width: 16px;"></i> Саги
+                </button>
+
+                <div class="theme-selector" title="Оберіть тему">
+                    <button class="theme-btn" id="theme-paper" onclick="changeTheme('paper')" title="Папір"></button>
+                    <button class="theme-btn" id="theme-minimal" onclick="changeTheme('minimal')" title="Мінімалізм"></button>
+                    <button class="theme-btn" id="theme-sage" onclick="changeTheme('sage')" title="Шавлія"></button>
+                    <button class="theme-btn" id="theme-lavender" onclick="changeTheme('lavender')" title="Лаванда"></button>
+                    <button class="theme-btn" id="theme-cotton-candy" onclick="changeTheme('cotton-candy')" title="Цукрова вата"></button>
+                    <button class="theme-btn" id="theme-midnight" onclick="changeTheme('midnight')" title="Північ"></button>
+                    <button class="theme-btn" id="theme-mocha" onclick="changeTheme('mocha')" title="Мокко"></button>
+                    <button class="theme-btn" id="theme-velvet" onclick="changeTheme('velvet')" title="Оксамит"></button>
+                    <button class="theme-btn" id="theme-adeline" onclick="changeTheme('adeline')" title="Аделіна"></button>
+                </div>
             </div>
         </div>
     </header>
@@ -386,6 +411,7 @@
                 <option value="author">Групування: Автор</option>
                 <option value="publisher">Групування: Видавництво</option>
                 <option value="pages">Прогрес</option>
+                <option value="rating">Топ Рейтинг</option>
             </select>
         </div>
     </div>
@@ -452,12 +478,31 @@
             localStorage.setItem('min_library_theme', themeName);
             document.querySelectorAll('.theme-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById('theme-' + themeName).classList.add('active');
+            updateFaviconColor(themeName);
         }
-        window.changeTheme(localStorage.getItem('min_library_theme') || 'paper');
+
+        function updateFaviconColor(theme) {
+            const favicon = document.getElementById('dynamic-favicon');
+            let color = '%23302B27'; 
+            const darkThemes = ['midnight', 'mocha', 'velvet', 'adeline'];
+            if (darkThemes.includes(theme)) { color = '%23E6D8D8'; } 
+            else if (theme === 'minimal') { color = '%23000000'; } 
+            else if (theme === 'sage') { color = '%232C362B'; }
+            else if (theme === 'lavender') { color = '%234B3A5A'; }
+            else if (theme === 'cotton-candy') { color = '%234A3F45'; }
+            
+            const svg = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='${color}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect width='4' height='16' x='4' y='4' rx='1'/><rect width='4' height='16' x='10' y='4' rx='1'/><rect width='4' height='16' x='16' y='4' rx='1'/><path d='M2 20h20'/></svg>`;
+            favicon.href = svg;
+        }
+
+        const savedTheme = localStorage.getItem('min_library_theme') || 'paper';
+        window.changeTheme(savedTheme);
 
         let currentOwner = 'sofa'; let currentList = 'library';
         let currentFilter = 'all'; let currentSort = 'newest';
         let searchQuery = ""; let books = []; let isListeningToDB = false;
+        
+        let groupSagas = false;
 
         onAuthStateChanged(auth, (user) => {
             if (user) startListening();
@@ -476,13 +521,44 @@
             });
         }
 
+        window.toggleSagaMode = function() {
+            groupSagas = !groupSagas;
+            const btn = document.getElementById('header-saga-toggle');
+            if(groupSagas) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+            render();
+        }
+
+        function updateGiftTimer() {
+            const targetDate = new Date("2026-03-08T00:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            const btn = document.getElementById('gift-btn');
+            const timerSpan = document.getElementById('gift-timer');
+
+            if (distance < 0) {
+                btn.classList.remove('locked');
+                btn.classList.add('unlocked');
+                btn.innerHTML = `<i data-lucide="gift" style="width: 16px;"></i> Відкрити подарунок!`;
+                btn.onclick = () => window.location.href = "https://uchiha00.github.io/Secret/";
+                lucide.createIcons();
+            } else {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                timerSpan.innerText = `${days}д ${hours}г ${minutes}хв`;
+            }
+        }
+        setInterval(updateGiftTimer, 1000);
+        updateGiftTimer();
+
         window.addEventListener('scroll', () => {
             const btn = document.getElementById('scrollTopBtn');
-            if (window.scrollY > 300) {
-                btn.classList.add('visible');
-            } else {
-                btn.classList.remove('visible');
-            }
+            if (window.scrollY > 300) btn.classList.add('visible');
+            else btn.classList.remove('visible');
         });
         window.scrollToTop = function() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
@@ -510,7 +586,9 @@
             document.getElementById('filter-container').style.display = list === 'library' ? 'flex' : 'none';
             document.getElementById('search-input').value = ""; searchQuery = "";
             currentFilter = 'all'; updateFilterUI();
-            if(list === 'wishlist' && currentSort === 'pages') { currentSort = 'newest'; document.getElementById('sort-select').value = 'newest'; }
+            if(list === 'wishlist' && (currentSort === 'pages' || currentSort === 'rating')) { 
+                currentSort = 'newest'; document.getElementById('sort-select').value = 'newest'; 
+            }
             render();
         }
 
@@ -518,7 +596,10 @@
         function updateFilterUI() { document.querySelectorAll('.filter-chip').forEach(btn => btn.classList.remove('active')); document.getElementById('filter-' + currentFilter).classList.add('active'); }
 
         window.setSort = function(sortType) {
-            if(currentList === 'wishlist' && sortType === 'pages') { alert("У Бажаному немає сторінок!"); document.getElementById('sort-select').value = 'newest'; return; }
+            if(currentList === 'wishlist' && (sortType === 'pages' || sortType === 'rating')) { 
+                alert("У Бажаному немає цього сортування!"); 
+                document.getElementById('sort-select').value = 'newest'; return; 
+            }
             currentSort = sortType; render();
         }
 
@@ -560,19 +641,48 @@
             try {
                 const coverUrl = await fetchCover(title, author, pub);
                 const newId = Date.now().toString();
-                await set(ref(db, 'books/' + newId), { id: newId, title: title, author: author || "Невідомий автор", publisher: pub || "", owner: currentOwner, list: currentList, status: 'unread', page: 0, cover: coverUrl, note: '', timestamp: Date.now() });
+                await set(ref(db, 'books/' + newId), { 
+                    id: newId, title: title, author: author || "Невідомий автор", publisher: pub || "", 
+                    series: "", volume: 0, rating: 0,
+                    owner: currentOwner, list: currentList, status: 'unread', page: 0, cover: coverUrl, note: '', timestamp: Date.now() 
+                });
                 tInp.value = ''; aInp.value = ''; pInp.value = ''; closeModal();
-            } catch (error) { alert("Помилка збереження! Перевірте інтернет."); } 
+            } catch (error) { alert("Помилка збереження!"); } 
             finally { btn.innerHTML = `<i data-lucide="plus" style="width:18px;"></i> Додати до колекції`; btn.disabled = false; lucide.createIcons(); }
         }
 
         window.updateBookField = function(id, field, value) {
-            let finalValue = (field === 'title' || field === 'author' || field === 'publisher') ? toTitleCase(value.trim()) : value;
-            if(field === 'page') finalValue = parseInt(value) || 0;
+            let finalValue = (field === 'title' || field === 'author' || field === 'publisher' || field === 'series') ? toTitleCase(value.trim()) : value;
+            if(field === 'page' || field === 'volume' || field === 'rating') finalValue = parseInt(value) || 0;
             update(ref(db, 'books/' + id), { [field]: finalValue }).catch(e => alert("Не вдалося оновити."));
         }
+        
+        window.setRating = function(id, rating) { updateBookField(id, 'rating', rating); }
         window.changeCover = function(event, id) { event.stopPropagation(); const u = prompt("Пряме посилання (URL) на фото:"); if (u !== null) updateBookField(id, 'cover', u.trim()); }
         window.deleteBook = function(id) { if(confirm("Видалити книгу?")) remove(ref(db, 'books/' + id)); }
+
+        window.promptSaga = function(id, currentSaga) {
+            const newSaga = prompt("Введіть назву Саги / Серії (наприклад, 'Гаррі Поттер').\nЩоб дістати книгу з саги, просто зітріть текст.", currentSaga || "");
+            if (newSaga !== null) {
+                updateBookField(id, 'series', newSaga.trim());
+                if (newSaga.trim() !== "") {
+                    setTimeout(() => {
+                        const vol = prompt(`Який це том у серії "${newSaga.trim()}"? (Введіть цифру)`, "1");
+                        if (vol !== null) updateBookField(id, 'volume', vol);
+                    }, 500);
+                } else {
+                    updateBookField(id, 'volume', 0);
+                }
+            }
+        }
+
+        // 🔥 ФУНКЦІЯ ВІДКРИТТЯ САГИ (БЕЗ ГЛЮКІВ АНІМАЦІЇ) 🔥
+        window.toggleSaga = function(headerElement) {
+            const block = headerElement.parentElement;
+            // Перевіряємо, чи ми не клікнули випадково по картинці/заповнювачу
+            if(event.target.closest('.saga-mini-shelf') && !event.target.closest('.saga-header-top')) return;
+            block.classList.toggle('open');
+        }
 
         function render() {
             const grid = document.getElementById('book-grid'); grid.innerHTML = '';
@@ -581,7 +691,7 @@
             
             let vBooks = baseBooks;
             if (searchQuery) {
-                vBooks = vBooks.filter(b => b.title.toLowerCase().includes(searchQuery) || b.author.toLowerCase().includes(searchQuery) || (b.publisher || '').toLowerCase().includes(searchQuery));
+                vBooks = vBooks.filter(b => b.title.toLowerCase().includes(searchQuery) || b.author.toLowerCase().includes(searchQuery) || (b.publisher || '').toLowerCase().includes(searchQuery) || (b.series || '').toLowerCase().includes(searchQuery));
             } else {
                 vBooks = vBooks.filter(b => b.list === currentList);
                 if (currentList === 'library' && currentFilter !== 'all') vBooks = vBooks.filter(b => b.status === currentFilter);
@@ -592,6 +702,7 @@
                 if (currentSort === 'title') return a.title.localeCompare(b.title);
                 if (currentSort === 'author') return a.author.localeCompare(b.author);
                 if (currentSort === 'publisher') return (a.publisher||"Я").localeCompare(b.publisher||"Я");
+                if (currentSort === 'rating') return (b.rating || 0) - (a.rating || 0);
                 if (currentSort === 'pages') return (b.page || 0) - (a.page || 0);
                 return 0;
             });
@@ -600,75 +711,179 @@
                 grid.innerHTML = `<div class="empty-state"><i data-lucide="book-dashed" style="width: 64px; height: 64px; opacity: 0.2; margin-bottom: 1rem;"></i><h3>Порожньо</h3></div>`; lucide.createIcons(); return;
             }
 
-            let lastGroup = null;
-
-            vBooks.forEach((book, index) => {
-                if (!searchQuery && (currentSort === 'author' || currentSort === 'publisher')) {
-                    let currentGroup = currentSort === 'author' ? book.author : (book.publisher || "Інші видання");
-                    if (currentGroup !== lastGroup) {
-                        const header = document.createElement('div');
-                        header.className = 'group-header';
-                        header.innerHTML = `<i data-lucide="${currentSort === 'author' ? 'pen-tool' : 'building-2'}" style="width:20px;"></i> ${currentGroup}`;
-                        grid.appendChild(header);
-                        lastGroup = currentGroup;
-                    }
-                }
-
-                const isLib = book.list === 'library';
-                let statusIcon = book.status === 'reading' ? 'book-open' : (book.status === 'read' ? 'check-circle-2' : 'circle');
+            if (groupSagas && !searchQuery) {
+                let sagas = {};
+                let singles = [];
                 
-                // РІЗНІ КНОПКИ ДЛЯ ПОЛИЦІ ТА БАЖАНОГО
-                const libraryActions = isLib ? `
-                    <div class="status-wrapper">
-                        <i data-lucide="${statusIcon}" class="status-icon"></i>
-                        <select class="status-select ${book.status}" onchange="updateBookField('${book.id}', 'status', this.value)">
-                            <option value="unread" ${book.status==='unread'?'selected':''}>Новенька</option>
-                            <option value="reading" ${book.status==='reading'?'selected':''}>Читаю</option>
-                            <option value="read" ${book.status==='read'?'selected':''}>Прочитана</option>
-                        </select>
-                    </div>
-                    ${book.status === 'reading' ? `<div class="page-tracker"><i data-lucide="bookmark" style="width:14px"></i><input type="number" class="page-input" value="${book.page||0}" onchange="updateBookField('${book.id}', 'page', this.value)" min="0"></div>` : ''}
-                ` : `<button class="btn-move-to-library" onclick="updateBookField('${book.id}', 'list', 'library')" title="Книгу куплено!"><i data-lucide="package-check" style="width:14px;"></i> Придбано</button>`;
+                vBooks.forEach(b => {
+                    if(b.series) {
+                        if(!sagas[b.series]) sagas[b.series] = [];
+                        sagas[b.series].push(b);
+                    } else {
+                        singles.push(b);
+                    }
+                });
 
-                const badgeHtml = searchQuery ? `<div class="list-badge"><i data-lucide="${isLib?'book-open':'sparkles'}" style="width:10px;"></i> ${isLib?'Полиця':'Бажане'}</div>` : '';
-                const imgHtml = book.cover ? `<img src="${book.cover}" class="cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="cover-placeholder" style="display:none;"><i data-lucide="image-off"></i>Без фото</div>` : `<div class="cover-placeholder"><i data-lucide="book" style="margin-bottom:8px;width:24px;opacity:0.5;"></i>${book.title}</div>`;
+                Object.keys(sagas).sort().forEach(sagaName => {
+                    const sagaBooks = sagas[sagaName];
+                    sagaBooks.sort((a, b) => (a.volume || 0) - (b.volume || 0));
 
-                const card = document.createElement('div'); card.className = 'card';
-                card.style.animationDelay = `${(index % 10) * 0.04}s`;
-                card.innerHTML = `
-                    <div class="cover-container">
-                        <div class="cover-wrapper" onclick="openImageViewer('${book.cover}')">
-                            <div class="cover-pages"></div>${imgHtml}<div class="cover-spine"></div>
-                            <button class="edit-cover-btn" onclick="changeCover(event, '${book.id}')" title="Змінити фото"><i data-lucide="image-plus" style="width: 14px;"></i></button>
-                        </div>
-                    </div>
+                    const readCount = sagaBooks.filter(b => b.status === 'read').length;
+                    const sagaBlock = document.createElement('div');
+                    sagaBlock.className = 'saga-block';
                     
-                    <div class="card-content">
-                        ${badgeHtml}
-                        <div>
-                            <input class="editable-input book-title-input" value="${book.title}" onchange="updateBookField('${book.id}', 'title', this.value)">
-                            <div class="author-pub-row">
-                                <input class="editable-input book-author-input" value="${book.author}" onchange="updateBookField('${book.id}', 'author', this.value)">
-                                <input class="editable-input book-publisher-input" value="${book.publisher || ''}" placeholder="Видавництво" onchange="updateBookField('${book.id}', 'publisher', this.value)">
-                            </div>
-                        </div>
-                        <div class="note-container">
-                            <div class="note-header"><i data-lucide="pen-line" style="width:12px;"></i> Нотатки</div>
-                            <textarea class="note-input" placeholder="Додайте враження або цитати..." onchange="updateBookField('${book.id}', 'note', this.value)">${book.note || ''}</textarea>
-                        </div>
-                        
-                        <div class="card-footer">
-                            <div class="footer-left-actions">
-                                ${libraryActions}
-                            </div>
-                            <button class="btn-delete" onclick="deleteBook('${book.id}')" title="Видалити книгу"><i data-lucide="trash-2" style="width:16px;"></i></button>
+                    let miniShelfHtml = '<div class="saga-mini-shelf">';
+                    sagaBooks.forEach(b => {
+                        const coverSrc = b.cover ? `<img src="${b.cover}" class="cover">` : `<div class="cover-placeholder" style="font-size:0.6rem;"><i data-lucide="book" style="margin-bottom:4px; width:16px;"></i>${b.title}</div>`;
+                        miniShelfHtml += `
+                            <div class="mini-saga-book" title="${b.title}">
+                                <div class="cover-wrapper">
+                                    <div class="cover-pages"></div>
+                                    ${coverSrc}
+                                    <div class="cover-spine"></div>
+                                </div>
+                                ${b.volume ? `<div class="mini-vol">${b.volume}</div>` : ''}
+                            </div>`;
+                    });
+                    
+                    // 🔥 КРАСИВИЙ ЗАПОВНЮВАЧ МІСЦЯ 🔥
+                    miniShelfHtml += `
+                        <div class="shelf-filler">
+                            <i data-lucide="library" style="width: 24px; height: 24px;"></i>
+                            <span>Далі буде...</span>
                         </div>
                     </div>`;
-                grid.appendChild(card);
-            });
+
+                    sagaBlock.innerHTML = `
+                        <div class="saga-header" onclick="toggleSaga(this)">
+                            <div class="saga-header-top">
+                                <div class="saga-title"><i data-lucide="layers" style="width:24px;"></i> ${sagaName}</div>
+                                <div class="saga-stats">Прочитано ${readCount} з ${sagaBooks.length} <i data-lucide="chevron-down" class="saga-chevron" style="margin-left:4px; width:16px;"></i></div>
+                            </div>
+                            ${miniShelfHtml}
+                        </div>
+                        <div class="saga-content"></div>
+                    `;
+                    grid.appendChild(sagaBlock);
+                    
+                    const sagaContent = sagaBlock.querySelector('.saga-content');
+                    sagaBooks.forEach((book, index) => renderCard(book, index, sagaContent));
+                });
+
+                if (singles.length > 0) {
+                    singles.forEach((book, index) => renderCard(book, index, grid));
+                }
+
+            } else {
+                let lastGroup = null;
+                vBooks.forEach((book, index) => {
+                    if (!searchQuery && (currentSort === 'author' || currentSort === 'publisher')) {
+                        let currentGroup = currentSort === 'author' ? book.author : (book.publisher || "Інші видання");
+                        let icon = currentSort === 'author' ? "pen-tool" : "building-2";
+                        
+                        if (currentGroup !== lastGroup && currentGroup) {
+                            const header = document.createElement('div');
+                            header.className = 'group-header';
+                            header.innerHTML = `<i data-lucide="${icon}" style="width:20px;"></i> ${currentGroup}`;
+                            grid.appendChild(header);
+                            lastGroup = currentGroup;
+                        }
+                    }
+                    renderCard(book, index, grid);
+                });
+            }
+            
             lucide.createIcons();
         }
-        lucide.createIcons();
+
+        function renderCard(book, index, container) {
+            const isLib = book.list === 'library';
+            let statusIcon = book.status === 'reading' ? 'book-open' : (book.status === 'read' ? 'check-circle-2' : 'circle');
+            
+            let ratingHtml = `<div class="rating-container">`;
+            const maxRating = isLib ? 5 : 3; 
+            const iconName = isLib ? "star" : "flame";
+            const currentRating = book.rating || 0;
+            
+            for(let i=1; i<=maxRating; i++) {
+                const activeClass = i <= currentRating ? "active" : "";
+                ratingHtml += `<svg onclick="setRating('${book.id}', ${i})" class="rate-icon ${iconName} ${activeClass}" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    ${isLib 
+                        ? `<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>` 
+                        : `<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>`
+                    }
+                </svg>`;
+            }
+            ratingHtml += `</div>`;
+
+            const searchTitle = encodeURIComponent(book.title + (book.author ? " " + book.author : ""));
+            const storeLinksHtml = !isLib ? `
+                <div class="store-links">
+                    <button class="btn-stores"><i data-lucide="shopping-cart" style="width:14px;"></i> Знайти ціну</button>
+                    <div class="store-dropdown">
+                        <a href="https://www.yakaboo.ua/ua/search?q=${searchTitle}" target="_blank">Yakaboo <i data-lucide="external-link" style="width:12px;"></i></a>
+                        <a href="https://book-ye.com.ua/catalog/?q=${searchTitle}" target="_blank">Книгарня Є <i data-lucide="external-link" style="width:12px;"></i></a>
+                        <a href="https://ksd.ua/search?q=${searchTitle}" target="_blank">КСД <i data-lucide="external-link" style="width:12px;"></i></a>
+                        <a href="https://vivat.com.ua/search/?search=${searchTitle}" target="_blank">Vivat <i data-lucide="external-link" style="width:12px;"></i></a>
+                    </div>
+                </div>
+            ` : '';
+
+            const libraryActions = isLib ? `
+                <div class="status-wrapper">
+                    <i data-lucide="${statusIcon}" class="status-icon"></i>
+                    <select class="status-select ${book.status}" onchange="updateBookField('${book.id}', 'status', this.value)">
+                        <option value="unread" ${book.status==='unread'?'selected':''}>Новенька</option>
+                        <option value="reading" ${book.status==='reading'?'selected':''}>Читаю</option>
+                        <option value="read" ${book.status==='read'?'selected':''}>Прочитана</option>
+                    </select>
+                </div>
+                ${book.status === 'reading' ? `<div class="page-tracker"><i data-lucide="bookmark" style="width:14px"></i><input type="number" class="page-input" value="${book.page||0}" onchange="updateBookField('${book.id}', 'page', this.value)" min="0"></div>` : ''}
+            ` : `<button class="btn-move-to-library" onclick="updateBookField('${book.id}', 'list', 'library')" title="Книгу куплено!"><i data-lucide="package-check" style="width:14px;"></i> Придбано</button> ${storeLinksHtml}`;
+
+            const badgeHtml = searchQuery ? `<div class="list-badge"><i data-lucide="${isLib?'book-open':'sparkles'}" style="width:10px;"></i> ${isLib?'Полиця':'Бажане'}</div>` : '';
+            const seriesBadgeHtml = book.series ? `<div class="series-badge"><i data-lucide="layers" style="width:10px; display:inline-block;"></i> ${book.series} (Том ${book.volume||'-'})</div>` : '';
+            
+            const imgHtml = book.cover ? `<img src="${book.cover}" class="cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="cover-placeholder" style="display:none;"><i data-lucide="image-off"></i>Без фото</div>` : `<div class="cover-placeholder"><i data-lucide="book" style="margin-bottom:8px;width:24px;opacity:0.5;"></i>${book.title}</div>`;
+
+            const card = document.createElement('div'); card.className = 'card';
+            card.style.animationDelay = `${(index % 10) * 0.04}s`;
+            card.innerHTML = `
+                <div class="cover-container">
+                    <div class="cover-wrapper" onclick="openImageViewer('${book.cover}')">
+                        <div class="cover-pages"></div>${imgHtml}<div class="cover-spine"></div>
+                        <button class="edit-cover-btn" onclick="changeCover(event, '${book.id}')" title="Змінити фото"><i data-lucide="image-plus" style="width: 14px;"></i></button>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <div>${badgeHtml}</div>
+                    <div>
+                        ${seriesBadgeHtml}
+                        <input class="editable-input book-title-input" value="${book.title}" onchange="updateBookField('${book.id}', 'title', this.value)">
+                        <div class="author-pub-row">
+                            <input class="editable-input book-author-input" value="${book.author}" onchange="updateBookField('${book.id}', 'author', this.value)">
+                            <input class="editable-input book-publisher-input" value="${book.publisher || ''}" placeholder="Видавництво" onchange="updateBookField('${book.id}', 'publisher', this.value)">
+                        </div>
+                    </div>
+                    <div class="note-container">
+                        <div class="note-header"><i data-lucide="pen-line" style="width:12px;"></i> Нотатки</div>
+                        <textarea class="note-input" placeholder="Додайте враження або цитати..." onchange="updateBookField('${book.id}', 'note', this.value)">${book.note || ''}</textarea>
+                    </div>
+                    
+                    <div class="card-footer">
+                        <div class="footer-left-actions">
+                            ${libraryActions}
+                        </div>
+                        <div class="footer-right-actions">
+                            ${ratingHtml}
+                            <button class="icon-action-btn" onclick="promptSaga('${book.id}', '${book.series || ''}')" title="${book.series ? 'Змінити Серію (Зараз: '+book.series+')' : 'Додати в Серію'}"><i data-lucide="folder-plus" style="width:18px;"></i></button>
+                            <button class="icon-action-btn delete" onclick="deleteBook('${book.id}')" title="Видалити книгу"><i data-lucide="trash-2" style="width:18px;"></i></button>
+                        </div>
+                    </div>
+                </div>`;
+            container.appendChild(card);
+        }
     </script>
 </body>
 </html>
