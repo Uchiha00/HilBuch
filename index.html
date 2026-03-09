@@ -49,11 +49,6 @@
         .header-right { display: flex; flex-direction: column; align-items: flex-end; gap: 1rem; width: 100%; flex: 1; max-width: max-content;}
         .header-controls-row { display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; justify-content: flex-end; width: 100%;}
         
-        .gift-btn { background: var(--surface); border: 1px solid var(--border); color: var(--ink-muted); padding: 0.5rem 1rem; border-radius: 100px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px; transition: var(--transition); box-shadow: var(--shadow-card); }
-        .gift-btn.locked { cursor: not-allowed; opacity: 0.8; }
-        .gift-btn.unlocked { cursor: pointer; background: linear-gradient(135deg, #FF9EBB, #8A64B8); color: white; border: none; box-shadow: 0 4px 15px rgba(138, 100, 184, 0.4); animation: pulseGift 2s infinite; }
-        @keyframes pulseGift { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-
         /* 🔥 КНОПКА САГИ В ШАПЦІ 🔥 */
         .header-saga-toggle { background: var(--surface); border: 1px solid var(--border); color: var(--ink-muted); padding: 0.5rem 1.2rem; border-radius: 100px; font-size: 0.8rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: var(--transition); box-shadow: var(--shadow-card); font-family: inherit;}
         .header-saga-toggle:hover { border-color: var(--accent); color: var(--ink); }
@@ -351,10 +346,6 @@
         </div>
         <div class="header-right">
             <div class="header-controls-row">
-                <button class="gift-btn locked" id="gift-btn">
-                    <i data-lucide="lock" style="width: 14px;"></i> <span id="gift-timer">Рахую...</span>
-                </button>
-                
                 <button class="header-saga-toggle" id="header-saga-toggle" onclick="toggleSagaMode()" title="Вимк / Увімк Саги">
                     <i data-lucide="layers" style="width: 16px;"></i> Саги
                 </button>
@@ -438,6 +429,16 @@
             <div class="input-group">
                 <label>Автор</label>
                 <input type="text" id="new-author" class="main-input" placeholder="Емілі Бронте" autocomplete="off">
+            </div>
+            <div class="input-row">
+                <div class="input-group">
+                    <label>Серія / Сага (необов'язково)</label>
+                    <input type="text" id="new-series" class="main-input" placeholder="Назва циклу..." autocomplete="off">
+                </div>
+                <div class="input-group" style="flex: 0.5;">
+                    <label>Том №</label>
+                    <input type="number" id="new-volume" class="main-input" placeholder="1" min="1">
+                </div>
             </div>
             <div class="input-group">
                 <label>Видавництво (необов'язково)</label>
@@ -532,29 +533,6 @@
             render();
         }
 
-        function updateGiftTimer() {
-            const targetDate = new Date("2026-03-08T00:00:00").getTime();
-            const now = new Date().getTime();
-            const distance = targetDate - now;
-            const btn = document.getElementById('gift-btn');
-            const timerSpan = document.getElementById('gift-timer');
-
-            if (distance < 0) {
-                btn.classList.remove('locked');
-                btn.classList.add('unlocked');
-                btn.innerHTML = `<i data-lucide="gift" style="width: 16px;"></i> Відкрити подарунок!`;
-                btn.onclick = () => window.location.href = "https://uchiha00.github.io/Secret/";
-                lucide.createIcons();
-            } else {
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                timerSpan.innerText = `${days}д ${hours}г ${minutes}хв`;
-            }
-        }
-        setInterval(updateGiftTimer, 1000);
-        updateGiftTimer();
-
         window.addEventListener('scroll', () => {
             const btn = document.getElementById('scrollTopBtn');
             if (window.scrollY > 300) btn.classList.add('visible');
@@ -631,8 +609,8 @@
         }
 
         window.addBook = async function() {
-            const tInp = document.getElementById('new-title'), aInp = document.getElementById('new-author'), pInp = document.getElementById('new-publisher'), btn = document.getElementById('btn-add-submit');
-            const title = toTitleCase(tInp.value.trim()), author = toTitleCase(aInp.value.trim()), pub = toTitleCase(pInp.value.trim());
+            const tInp = document.getElementById('new-title'), aInp = document.getElementById('new-author'), pInp = document.getElementById('new-publisher'), sInp = document.getElementById('new-series'), vInp = document.getElementById('new-volume'), btn = document.getElementById('btn-add-submit');
+            const title = toTitleCase(tInp.value.trim()), author = toTitleCase(aInp.value.trim()), pub = toTitleCase(pInp.value.trim()), series = toTitleCase(sInp.value.trim()), vol = parseInt(vInp.value) || 0;
             
             if (!title) { tInp.style.boxShadow = "0 0 0 2px #E03131"; setTimeout(() => tInp.style.boxShadow = "none", 2000); return; }
 
@@ -643,10 +621,10 @@
                 const newId = Date.now().toString();
                 await set(ref(db, 'books/' + newId), { 
                     id: newId, title: title, author: author || "Невідомий автор", publisher: pub || "", 
-                    series: "", volume: 0, rating: 0,
+                    series: series || "", volume: vol, rating: 0,
                     owner: currentOwner, list: currentList, status: 'unread', page: 0, cover: coverUrl, note: '', timestamp: Date.now() 
                 });
-                tInp.value = ''; aInp.value = ''; pInp.value = ''; closeModal();
+                tInp.value = ''; aInp.value = ''; pInp.value = ''; sInp.value = ''; vInp.value = ''; closeModal();
             } catch (error) { alert("Помилка збереження!"); } 
             finally { btn.innerHTML = `<i data-lucide="plus" style="width:18px;"></i> Додати до колекції`; btn.disabled = false; lucide.createIcons(); }
         }
@@ -676,10 +654,8 @@
             }
         }
 
-        // 🔥 ФУНКЦІЯ ВІДКРИТТЯ САГИ (БЕЗ ГЛЮКІВ АНІМАЦІЇ) 🔥
         window.toggleSaga = function(headerElement) {
             const block = headerElement.parentElement;
-            // Перевіряємо, чи ми не клікнули випадково по картинці/заповнювачу
             if(event.target.closest('.saga-mini-shelf') && !event.target.closest('.saga-header-top')) return;
             block.classList.toggle('open');
         }
@@ -746,7 +722,6 @@
                             </div>`;
                     });
                     
-                    // 🔥 КРАСИВИЙ ЗАПОВНЮВАЧ МІСЦЯ 🔥
                     miniShelfHtml += `
                         <div class="shelf-filler">
                             <i data-lucide="library" style="width: 24px; height: 24px;"></i>
